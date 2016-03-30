@@ -1,34 +1,22 @@
 'use strict';
 
 angular.module('smartschoolApp')
-    .controller('ClasseController', function ($scope, $state, Classe, ClasseSearch, ParseLinks,ClasseRecherche) {
+    .controller('ClasseController', function ($scope, $state, ParseLinks) {
 
         $scope.classes = [];
         $scope.predicate = 'id';
         $scope.reverse = true;
         $scope.page = 1;
         $scope.loadAll = function() {
-            Classe.query({page: $scope.page - 1, size: 20, sort: [$scope.predicate + ',' + ($scope.reverse ? 'asc' : 'desc'), 'id']}, function(result, headers) {
-                $scope.links = ParseLinks.parse(headers('link'));
-                $scope.totalItems = headers('X-Total-Count');
-                $scope.classes = result;
-            });
+        });
         };
         $scope.loadPage = function(page) {
-            $scope.page = page;
-            $scope.loadAll();
         };
         $scope.loadAll();
 
 
         $scope.search = function () {
-            ClasseSearch.query({query: $scope.searchQuery}, function(result) {
-                $scope.classes = result;
-            }, function(response) {
-                if(response.status === 404) {
-                    $scope.loadAll();
-                }
-            });
+
         };
 
 
@@ -48,7 +36,7 @@ angular.module('smartschoolApp')
     });
 
 angular.module('smartschoolApp')
-    .controller('EcoleClassesController', function ($scope,$stateParams,$state, Classe, ClasseSearch, ParseLinks,entity,Ecole,ClasseRecherche,ClasseEcole) {
+    .controller('EcoleClassesController', function ($scope,$stateParams,$state, ParseLinks) {
 
         $scope.classes = [];
         $scope.predicate = 'id';
@@ -56,12 +44,21 @@ angular.module('smartschoolApp')
         $scope.page = 1;
         $scope.ecole=entity;
         $scope.loadAll = function() {
-            ClasseEcole.query({page: $scope.page - 1, size: 20, sort: [$scope.predicate + ',' + ($scope.reverse ? 'asc' : 'desc'), 'id'],id:$stateParams.idecole}, function(result,headers) {
-                $scope.links = ParseLinks.parse(headers('link'));
-                $scope.totalItems = headers('X-Total-Count');
-                $scope.classes = result;
+                $scope.classes = [
+                    {
+                        id : "1";
+                        intitule : "CP 1",
+                        nombreMax : "30",
+                        classeType : "CP"
+                    },
+                    {
+                        id : "2",
+                        intitule : "CP 2",
+                        nombreMax : "25",
+                        classeType : "CP"
+                    }
+                ];
 
-            });
         };
 
         $scope.loadPage = function(page) {
