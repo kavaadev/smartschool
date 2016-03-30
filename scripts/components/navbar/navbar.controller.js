@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('smartschoolApp')
-    .controller('NavbarController', function ($scope, $location, $state, Auth, Principal, ENV,Ecole) {
+    .controller('NavbarController', function ($scope, $location, $state, Auth, Principal, ENV) {
 
         $scope.mesecoles = [{
                                 id : "1",
