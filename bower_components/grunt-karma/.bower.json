@@ -1,0 +1,15 @@
+{
+  "name": "grunt-karma",
+  "homepage": "https://github.com/karma-runner/grunt-karma",
+  "version": "0.12.1",
+  "_release": "0.12.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.12.1",
+    "commit": "1f7502a93e387b5b3c709b959c417a17afb8ec80"
+  },
+  "_source": "git://github.com/karma-runner/grunt-karma.git",
+  "_target": "~0.12.1",
+  "_originalSource": "grunt-karma",
+  "_direct": true
+}

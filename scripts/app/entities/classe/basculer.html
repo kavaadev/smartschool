@@ -1,0 +1,49 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+            ng-click="clear()">&times;</button>
+    <h4 class="modal-title" id="myClasseLabel">Ré-inscription des élèves en masse ( {{classe.intitule}} <span class="glyphicon glyphicon-arrow-right"></span> {{inscription.classe.intitule}} )</h4>
+</div>
+<div class="modal-body" id="bulletin" style="background-color:#fff">
+
+
+
+    <form name="basculerForm" ng-submit="basculer(inscription.classe)">
+    <div class="row">
+        <div class="col-xs-6">
+            <h4 style="margin-top:15px">Année actuelle ( {{anneeScolaire.intitule}} )</h4>
+            <div class="table-responsive">
+                <table  class="table table-bordered table-hover table-condensed editable-table">
+                    <thead>
+                    <tr>
+                        <th style="width: 50px;text-align: center;">
+                            N° école
+                        </th>
+                        <th style="width: 200px;text-align: center;">
+                            Nom et prénom
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="inscription in inscriptions | filter: {redoublant:false}">
+                        <td style="width: 50px;text-align: left;">{{inscription.eleve.identifiantEleve}}</td>
+                        <td style="width: 200px;text-align: left;">{{inscription.eleve.nom}} {{inscription.eleve.prenom}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <h4 style="margin-top:15px">Année suivante ( {{anneeScolaireNext.intitule}} )</h4>
+            <div class="form-group">
+                <label class="control-label" for="field_classe">Classe suivante</label>
+                <select class="form-control" id="field_classe" name="classe" ng-model="inscription.classe" ng-options="classe as classe.intitule for classe in classes track by classe.id" required />
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" ng-disabled="basculerForm.$invalid" class="btn btn-info" id="save-bascule">
+        Basculer
+    </button>
+    </form>
+</div>
+

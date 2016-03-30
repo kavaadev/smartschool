@@ -1,0 +1,36 @@
+{
+    "smartschoolApp": {
+        "enseignant" : {
+            "home": {
+                "title": "La Liste des Enseignants",
+                "createLabel": "Créer un nouvel Enseignant",
+                "createOrEditLabel": "Créer ou éditer un Enseignant",
+                "search": "Cherche un enseignant"
+            },
+            "created": "Un nouvel Enseignant a été créé avec l'identifiant {{ param }}",
+            "updated": "L'Enseignant avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "L'Enseignant avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer l'Enseignant {{ id }} ?"
+            },
+            "detail": {
+                "title": "Enseignant"
+            },
+            "cin": "Cin",
+            "nom": "Nom",
+            "prenom": "Prénom",
+            "vacataire": "Vacataire",
+            "dateNaissance": "Date Naissance",
+            "diplome": "Diplôme",
+            "dateEntree": "Date de recrutement",
+            "photo": "Photo",
+            "matiere": "Matière",
+            "enseignantCours": "Enseignant Cours",
+            "pays": "Nationalité",
+            "sexe": "Sexe",
+            "identifiantSocial": "Identifiant Social",
+            "cnss": "CNSS"
+        }
+    }
+}
+

@@ -1,0 +1,32 @@
+{
+    "smartschoolApp": {
+        "enseignant" : {
+            "home": {
+                "title": "Enseignants",
+                "createLabel": "Create a new Enseignant",
+                "createOrEditLabel": "Create or edit a Enseignant",
+                "search": "Search for Enseignant"
+            },
+            "created": "A new Enseignant is created with identifier {{ param }}",
+            "updated": "A Enseignant is updated with identifier {{ param }}",
+            "deleted": "A Enseignant is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Enseignant {{ id }}?"
+            },
+            "detail": {
+                "title": "Enseignant"
+            },
+            "cin": "Cin",
+            "nom": "Nom",
+            "prenom": "Prenom",
+            "vacataire": "Vacataire",
+            "dateNaissance": "DateNaissance",
+            "diplome": "Diplome",
+            "dateEntree": "DateEntree",
+            "photo": "Photo",
+            "matiere": "Matiere",
+            "enseignantCours": "EnseignantCours",
+            "pays": "Pays"
+        }
+    }
+}

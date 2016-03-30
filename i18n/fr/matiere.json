@@ -1,0 +1,26 @@
+{
+    "smartschoolApp": {
+        "matiere" : {
+            "home": {
+                "title": "La liste des matières",
+                "createLabel": "Créer une nouvelle  Matière",
+                "createOrEditLabel": "Créer ou éditer une Matière",
+                "search": "Recherche une  Matière"
+            },
+            "created": "Une nouvelle  Matière a été créée avec l'identifiant {{ param }}",
+            "updated": "La Matière avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "La Matière avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer la Matière {{ id }} ?"
+            },
+            "detail": {
+                "title": "Matières"
+            },
+            "intitule": "Intitulé",
+            "abreviation": "Abréviation",
+            "cours": "Cours",
+            "enseignant": "Enseignant"
+        }
+    }
+}
+

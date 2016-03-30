@@ -1,0 +1,26 @@
+{
+    "smartschoolApp": {
+        "emploi" : {
+            "home": {
+                "title": "Emplois",
+                "createLabel": "Create a new Emploi",
+                "createOrEditLabel": "Create or edit a Emploi",
+                "search": "Search for Emploi"
+            },
+            "created": "A new Emploi is created with identifier {{ param }}",
+            "updated": "A Emploi is updated with identifier {{ param }}",
+            "deleted": "A Emploi is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Emploi {{ id }}?"
+            },
+            "detail": {
+                "title": "Emploi"
+            },
+            "title": "Title",
+            "start": "Start",
+            "end": "End",
+            "backgroundColor": "BackgroundColor",
+            "enseignantCours": "EnseignantCours"
+        }
+    }
+}

@@ -1,0 +1,62 @@
+
+<div>
+    <h2><span translate="smartschoolApp.emploi.detail.title">Emploi</span> {{emploi.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="smartschoolApp.emploi.title">Title</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{emploi.title}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="smartschoolApp.emploi.start">Start</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{emploi.start}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="smartschoolApp.emploi.end">End</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{emploi.end}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="smartschoolApp.emploi.backgroundColor">BackgroundColor</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{emploi.backgroundColor}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="smartschoolApp.emploi.enseignantCours">enseignantCours</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="enseignantCours.detail({id:emploi.enseignantCours.id})">{{emploi.enseignantCours.id}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

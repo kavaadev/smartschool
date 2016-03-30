@@ -1,0 +1,45 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myEnseignantCoursLabel" translate="smartschoolApp.enseignantCours.home.createOrEditLabel">Create or edit a EnseignantCours</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+
+        <div class="form-group">
+            <label translate="smartschoolApp.enseignantCours.cours" for="field_cours">cours</label>
+            <select class="form-control" id="field_cours" name="cours" ng-model="enseignantCours.cours" ng-options="cours as cours.intitule for cours in courss track by cours.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="smartschoolApp.enseignantCours.enseignant" for="field_enseignant">enseignant</label>
+            <select class="form-control" id="field_enseignant" name="enseignant" ng-model="enseignantCours.enseignant" ng-options='enseignant as ( enseignant.nom + "  "+ enseignant.prenom) for enseignant in enseignants track by enseignant.id'>
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="smartschoolApp.enseignantCours.classe" for="field_classe">classe</label>
+            <select class="form-control" id="field_classe" name="classe" ng-model="enseignantCours.classe" ng-options="classe as classe.intitule for classe in classes track by classe.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="smartschoolApp.enseignantCours.anneeScolaire" for="field_anneeScolaire">anneeScolaire</label>
+            <select class="form-control" id="field_anneeScolaire" name="anneeScolaire" ng-model="enseignantCours.anneeScolaire" ng-options='anneeScolaire as (anneeScolaire.dateDebut + " - " + anneeScolaire.dateFin ) for anneeScolaire in anneescolaires track by anneeScolaire.id'>
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

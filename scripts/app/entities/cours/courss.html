@@ -1,0 +1,79 @@
+<div>
+    <jh-alert></jh-alert>
+    <div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-4 no-padding-left">
+            <button class="btn btn-primary" ui-sref="ecole.detail({id:ecole.id})">
+                <span class="glyphicon glyphicon-arrow-left"></span> {{ecole.intitule}}
+            </button>
+            <h2 translate="smartschoolApp.cours.home.title">Cours</h2>
+        </div>
+        <div class="col-sm-8 text-right">
+            <form name="searchForm" class="form-inline">
+                <div class="form-group p-r">
+                    <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="{{ 'smartschoolApp.cours.home.search' | translate }}">
+                </div>
+                <button class="btn btn-info btn-sm"  ng-click="search()" tooltip="Chercher">
+                    <i class="glyphicon glyphicon-search"></i>
+                </button>
+                <button class="btn btn-primary" ui-sref="cours.new" id="cours-new">
+                    <span class="glyphicon glyphicon-plus"></span>
+
+                </button>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <th jh-sort-by="intitule"><span translate="smartschoolApp.cours.intitule">Intitule</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="coefficient"><span translate="smartschoolApp.cours.coefficient">Coefficient</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="optionnel"><span translate="smartschoolApp.cours.optionnel">Optionnel</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="classeType.id"><span translate="smartschoolApp.cours.classeType">classeType</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="matiere.id"><span translate="smartschoolApp.cours.matiere">matiere</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="cours in courss track by cours.id">
+                    <td><a ui-sref="cours.detail({id:cours.id})">{{cours.intitule}}</a></td>
+                    <td>{{cours.coefficient}}</td>
+                    <td>{{cours.optionnel}}</td>
+                    <td>
+                        <a ui-sref="classeType.detail({id:cours.classeType.id})">{{cours.classeType.intitule}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="matiere.detail({id:cours.matiere.id})">{{cours.matiere.intitule}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="cours.detail({id:cours.id})"
+                                    class="btn btn-info btn-sm" id="cours-detail">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+
+                            </button>
+                            <button type="submit"
+                                    ui-sref="cours.edit({id:cours.id})"
+                                    class="btn btn-primary btn-sm" id="cours-edit">
+                                <span class="glyphicon glyphicon-pencil"></span>
+
+                            </button>
+                            <button type="submit"
+                                    ui-sref="cours.delete({id:cours.id})"
+                                    class="btn btn-danger btn-sm" id="cours-delete">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <uib-pagination class="pagination-sm" total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pagination>
+    </div>
+</div>

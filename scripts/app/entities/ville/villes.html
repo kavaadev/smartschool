@@ -1,0 +1,69 @@
+<div>
+    <div class="row">
+        <div class="col-sm-7">
+            <h2 translate="smartschoolApp.ville.home.title">Villes</h2>
+        </div>
+        <div class="col-sm-5 text-right">
+            <form name="searchForm" class="form-inline">
+                <div class="form-group p-r">
+                    <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="{{ 'smartschoolApp.ville.home.search' | translate }}">
+
+                </div>
+                <button class="btn btn-info btn-sm"  ng-click="search()" tooltip="Chercher">
+                    <i class="glyphicon glyphicon-search"></i>
+                </button>
+                <button class="btn btn-primary" ui-sref="ville.new" >
+
+                    <span class="glyphicon glyphicon-plus"></span>
+
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <jh-alert></jh-alert>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+
+                    <th jh-sort-by="intitule"><span translate="smartschoolApp.ville.intitule">Intitule</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="region.intitule"><span translate="smartschoolApp.ville.region">region</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="ville in villes track by ville.id">
+
+                    <td>{{ville.intitule}}</td>
+                    <td>
+                        <a ui-sref="region.detail({id:ville.region.intitule})">{{ville.region.intitule}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="ville.detail({id:ville.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="ville.edit({id:ville.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="ville.delete({id:ville.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <uib-pagination class="pagination-sm" total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pagination>
+    </div>
+</div>

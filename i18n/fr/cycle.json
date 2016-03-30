@@ -1,0 +1,24 @@
+{
+    "smartschoolApp": {
+        "cycle" : {
+            "home": {
+                "title": "Cycles",
+                "createLabel": "Créer un nouveau Cycle",
+                "createOrEditLabel": "Créer ou éditer un Cycle",
+                "search": "Chercher un Cycle"
+            },
+            "created": "Un nouveau Cycle a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Cycle avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Cycle avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Cycle {{ id }} ?"
+            },
+            "detail": {
+                "title": "Cycle"
+            },
+            "intitule": "Intitulé",
+            "classeType": "Classe Type"
+        }
+    }
+}
+

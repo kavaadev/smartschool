@@ -1,0 +1,85 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+    <input type="hidden" class="form-control" id="id" name="id"
+           ng-model="classeType.id" readonly />
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myClasseTypeLabel" >Créer ou éditer une Classe Type</h4>
+    </div>
+    <hr>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+
+        <div class="form-group">
+            <label class="control-label"  for="field_intitule">Intitulé</label>
+            <input type="text" class="form-control" name="intitule" id="field_intitule"
+                    ng-model="classeType.intitule"
+                    required />
+            <div ng-show="editForm.intitule.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.intitule.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label  for="field_systemeEducatif">Système éducatif</label>
+            <select class="form-control" id="field_systemeEducatif" name="systemeEducatif" ng-model="classeType.systemeEducatif" ng-options="systeme as systeme.intitule for systeme in systemes track by systeme.id">
+                <option value="">&nbsp;</option>
+            </select>
+        </div>
+
+        <div class="row">
+        <div class="col-sm-6">
+            <label  for="field_typeEnseignement">Type d'enseignement</label>
+            <select  class="form-control" id="field_typeEnseignement" name="typeEnseignement" ng-model="classeType.typeEnseignement" ng-options="typeEnseignement as typeEnseignement.intitule for typeEnseignement in typeenseignements track by typeEnseignement.id">
+                <option value="">&nbsp;</option>
+            </select>
+        </div>
+        <div class="col-sm-6">
+            <label  for="field_cycle">Cycle</label>
+            <select  class="form-control" id="field_cycle" name="cycle" ng-model="classeType.cycle" ng-options="cycle as cycle.intitule for cycle in cycles track by cycle.id">
+                <option value="">&nbsp;</option>
+            </select>
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-sm-6">
+            <label  for="field_niveau">Niveau</label>
+            <select  class="form-control" id="field_niveau" name="niveau" ng-model="classeType.niveau" ng-options="niveau as niveau.intitule for niveau in niveaus track by niveau.id">
+                <option value="">&nbsp;</option>"
+            </select>
+        </div>
+        <div class="col-sm-6">
+            <label  for="field_filiere">Filière</label>
+            <select  class="form-control" id="field_filiere" name="filiere" ng-model="classeType.filiere" ng-options="filiere as filiere.intitule for filiere in filieres track by filiere.id">
+                <option value="">&nbsp;</option>
+            </select>
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-sm-6">
+            <label  for="field_serie">Série</label>
+            <select  class="form-control" id="field_serie" name="serie" ng-model="classeType.serie" ng-options="serie as serie.intitule for serie in series track by serie.id">
+                <option value="">&nbsp;</option>
+            </select>
+        </div>
+        <div class="col-sm-6">
+            <label  for="field_optionn">Option</label>
+            <select class="form-control" id="field_optionn" name="optionn" ng-model="classeType.optionn" ng-options="optionn as optionn.intitule for optionn in optionns track by optionn.id">
+                <option value="">&nbsp;</option>
+            </select>
+        </div>
+        </div>
+    </div>
+    <hr>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary" id="save-new-classeType">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

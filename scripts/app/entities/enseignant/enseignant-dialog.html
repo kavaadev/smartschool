@@ -1,0 +1,166 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myEnseignantLabel" translate="smartschoolApp.enseignant.home.createOrEditLabel">Create or edit a Enseignant</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group" ngf-drop ngf-change="setPhoto($file, enseignant)" ngf-pattern="'image/*'">
+                    <label class="control-label" translate="smartschoolApp.enseignant.photo" for="field_photo">Photo</label>
+                    <div>
+                        <img data-ng-src="{{'data:' + enseignant.photoContentType + ';base64,' + enseignant.photo}}" style="max-height: 100px;" ng-if="enseignant.photo"/>
+                        <div class="help-block clearfix">
+                            <span class="pull-left">{{enseignant.photoContentType}} {{byteSize(enseignant.photo)}}</span>
+                            <button ng-click="enseignant.photo=null;enseignant.photoContentType=null;"
+                                    ng-if="enseignant.photo"
+                                    class="btn btn-default btn-xs pull-right">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                        </div>
+                        <button type="file" ngf-select class="btn btn-default btn-block"
+                                ngf-change="setPhoto($file, enseignant)" accept="image/*" translate="entity.action.addimage">
+                            Add image
+                        </button>
+                    </div>
+                    <input type="hidden" class="form-control" name="photo" id="field_photo"
+                           ng-model="enseignant.photo"
+                    />
+                    <input type="hidden" class="form-control" name="photoContentType" id="field_photoContentType"
+                           ng-model="enseignant.photoContentType" />
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" translate="smartschoolApp.enseignant.cin" for="field_cin">Cin</label>
+                    <input type="text" class="form-control" name="cin" id="field_cin"
+                           ng-model="enseignant.cin"
+                           required />
+                    <div ng-show="editForm.cin.$invalid">
+                        <p class="help-block"
+                           ng-show="editForm.cin.$error.required" translate="entity.validation.required">
+                            This field is required.
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" translate="smartschoolApp.enseignant.nom" for="field_nom">Nom</label>
+                    <input type="text" class="form-control" name="nom" id="field_nom"
+                           ng-model="enseignant.nom"
+                           required />
+                    <div ng-show="editForm.nom.$invalid">
+                        <p class="help-block"
+                           ng-show="editForm.nom.$error.required" translate="entity.validation.required">
+                            This field is required.
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" translate="smartschoolApp.enseignant.prenom" for="field_prenom">Prenom</label>
+                    <input type="text" class="form-control" name="prenom" id="field_prenom"
+                           ng-model="enseignant.prenom"
+                           required />
+                    <div ng-show="editForm.prenom.$invalid">
+                        <p class="help-block"
+                           ng-show="editForm.prenom.$error.required" translate="entity.validation.required">
+                            This field is required.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" translate="smartschoolApp.enseignant.sexe" for="field_sexe">Sexe</label>
+                    <select class="form-control" name="sexe" ng-model="enseignant.sexe" id="field_sexe">
+                        <option value="F" translate="smartschoolApp.Sexe.Feminin">F</option>
+                        <option value="M" translate="smartschoolApp.Sexe.Masculin">M</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label translate="smartschoolApp.enseignant.pays" for="field_pays">pays</label>
+                    <select class="form-control" id="field_pays" name="pays" ng-model="enseignant.pays" ng-options="pays as pays.intitule for pays in payss track by pays.id">
+                        <option value=""></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" translate="smartschoolApp.enseignant.dateNaissance" for="field_dateNaissance">DateNaissance</label>
+                    <input id="field_dateNaissance" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="enseignant.dateNaissance" is-open="datePickerForDateNaissance.status.opened"
+                    />
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="datePickerForDateNaissanceOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+                </div>
+
+
+            </div>
+            <div class="col-sm-6" style="background:#FFFFFF">
+                <div class="form-group">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" ng-model="enseignant.vacataire" id="field_vacataire"
+                                                          ng-true-value="true" ng-false-value="false">
+                                <label translate="smartschoolApp.enseignant.vacataire" for="field_vacataire">
+                                    Optionnel
+                                </label>
+                            </label>
+                        </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" translate="smartschoolApp.enseignant.diplome" for="field_diplome">Diplome</label>
+                    <textarea rows="4" cols="50" type="text" class="form-control" name="diplome" id="field_diplome"
+                           ng-model="enseignant.diplome"/>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" translate="smartschoolApp.enseignant.dateEntree" for="field_dateEntree">DateEntree</label>
+                    <input id="field_dateEntree" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="enseignant.dateEntree" is-open="datePickerForDateEntree.status.opened"
+                    />
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="datePickerForDateEntreeOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+                </div>
+                <div class="form-group" ng-hide="enseignant.vacataire">
+                    <label class="control-label" translate="smartschoolApp.enseignant.identifiantSocial" for="field_identifiantSocial">Identifiant Social</label>
+                    <input type="text" class="form-control" name="identifiantSocial" id="field_identifiantSocial"
+                           ng-model="enseignant.identifiantSocial"
+                           required />
+                    <div ng-show="editForm.nom.$invalid">
+                        <p class="help-block"
+                           ng-show="editForm.nom.$error.required" translate="entity.validation.required">
+                            This field is required.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label translate="smartschoolApp.enseignant.matiere" for="field_matiere">matiere</label>
+                    <select class="form-control" id="field_matiere" multiple name="matiere" ng-model="enseignant.matieres" ng-options="matiere as matiere.intitule for matiere in matieres track by matiere.id"></select>
+                </div>
+
+            </div>
+
+            </div>
+        </div>
+
+
+
+
+        <!--div class="form-group">
+            <label class="control-label" translate="smartschoolApp.enseignant.vacataire" for="field_vacataire">Vacataire</label>
+            <input type="checkbox" class="form-control" name="vacataire" id="field_vacataire"
+                    ng-model="enseignant.vacataire"
+                     />
+        </div!-->
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary" id="save-new-enseignant">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

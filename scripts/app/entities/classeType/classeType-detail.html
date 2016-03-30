@@ -1,0 +1,112 @@
+
+<div>
+    <h2><span translate="smartschoolApp.classeType.detail.title">ClasseType</span> {{classeType.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="smartschoolApp.classeType.intitule">Intitule</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{classeType.intitule}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="smartschoolApp.classeType.typeEnseignement">typeEnseignement</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="typeEnseignement.detail({id:classeType.typeEnseignement.id})">{{classeType.typeEnseignement.intitule}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="smartschoolApp.classeType.cycle">cycle</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="cycle.detail({id:classeType.cycle.id})">{{classeType.cycle.intitule}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="smartschoolApp.classeType.niveau">niveau</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="niveau.detail({id:classeType.niveau.id})">{{classeType.niveau.intitule}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="smartschoolApp.classeType.filiere">filiere</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="filiere.detail({id:classeType.filiere.id})">{{classeType.filiere.intitule}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="smartschoolApp.classeType.serie">serie</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="serie.detail({id:classeType.serie.id})">{{classeType.serie.intitule}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="smartschoolApp.classeType.optionn">optionn</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="optionn.detail({id:classeType.optionn.id})">{{classeType.optionn.intitule}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="user-management.createdBy">CreatedBy</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{classeType.createdBy}}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="user-management.createdDate">CreatedDate</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control"
+                           value="{{classeType.createdDate | date:'dd/MM/yy HH:mm' }}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="user-management.lastModifiedBy">LastModifiedBy</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control" value="{{classeType.lastModifiedBy}}" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="user-management.lastModifiedDate">LastCreatedDate</span>
+                </td>
+                <td>
+                    <input type="text" class="input-sm form-control"
+                           value="{{classeType.lastModifiedDate | date:'dd/MM/yy HH:mm'}}" readonly>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info" id="back">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

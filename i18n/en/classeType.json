@@ -1,0 +1,29 @@
+{
+    "smartschoolApp": {
+        "classeType" : {
+            "home": {
+                "title": "ClasseTypes",
+                "createLabel": "Create a new ClasseType",
+                "createOrEditLabel": "Create or edit a ClasseType",
+                "search": "Search for ClasseType"
+            },
+            "created": "A new ClasseType is created with identifier {{ param }}",
+            "updated": "A ClasseType is updated with identifier {{ param }}",
+            "deleted": "A ClasseType is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete ClasseType {{ id }}?"
+            },
+            "detail": {
+                "title": "ClasseType"
+            },
+            "intitule": "Intitule",
+            "dateCreation": "DateCreation",
+            "typeEnseignement": "TypeEnseignement",
+            "cycle": "Cycle",
+            "niveau": "Niveau",
+            "filiere": "Filiere",
+            "serie": "Serie",
+            "optionn": "Optionn"
+        }
+    }
+}

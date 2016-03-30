@@ -1,0 +1,70 @@
+<div>
+
+    <div class="row">
+        <div class="col-sm-7">
+            <h2 >Systeme Educatif</h2>
+        </div>
+        <div class="col-sm-5 text-right">
+            <form name="searchForm" class="form-inline">
+                <div class="form-group p-r">
+                    <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="{{ 'smartschoolApp.systemeEducatif.home.search' | translate }}">
+                </div>
+                <button class="btn btn-info btn-sm"  ng-click="search()" tooltip="Chercher">
+                    <i class="glyphicon glyphicon-search"></i>
+                </button>
+                <button class="btn btn-primary" ui-sref="systemeEducatif.new"  id="systemeEducatif-new">
+                    <span class="glyphicon glyphicon-plus"></span>
+
+                </button>
+            </form>
+        </div>
+    </div>
+
+
+    <jh-alert></jh-alert>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <th jh-sort-by="intitule"><span translate="smartschoolApp.systemeEducatif.intitule">Intitule</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="abreviation"><span translate="smartschoolApp.systemeEducatif.abreviation">Abreviation</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="description"><span translate="smartschoolApp.systemeEducatif.description">Description</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="systemeEducatif in systemeEducatifs track by systemeEducatif.id">
+                    <td><a ui-sref="systemeEducatif.detail({id:systemeEducatif.id})">{{systemeEducatif.intitule}}</a></td>
+                    <td>{{systemeEducatif.abreviation}}</td>
+                    <td>{{systemeEducatif.description}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="systemeEducatif.detail({id:systemeEducatif.id})"
+                                    class="btn btn-info btn-sm" id="systemeEducatif-detail">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+
+                            </button>
+                            <button type="submit"
+                                    ui-sref="systemeEducatif.edit({id:systemeEducatif.id})"
+                                    class="btn btn-primary btn-sm" id="systemeEducatif-edit">
+                                <span class="glyphicon glyphicon-pencil"></span>
+
+                            </button>
+                            <button type="submit"
+                                    ui-sref="systemeEducatif.delete({id:systemeEducatif.id})"
+                                    class="btn btn-danger btn-sm" id="systemeEducatif-delete">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <uib-pagination class="pagination-sm" total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pagination>
+    </div>
+</div>

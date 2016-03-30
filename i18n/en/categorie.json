@@ -1,0 +1,10 @@
+{
+    "smartschoolApp": {
+        "Categorie" : {
+            "null": "",
+            "Public": "Public",
+            "Privee": "Privee",
+            "SemiPublic": "SemiPublic"
+        }
+    }
+}

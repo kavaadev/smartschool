@@ -1,0 +1,78 @@
+<div>
+    <h2 translate="smartschoolApp.emploi.home.title">Emplois</h2>
+    <jh-alert></jh-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="emploi.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span 
+class="hidden-xs"                        translate="smartschoolApp.emploi.home.createLabel">Create new Emploi
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="{{ 'smartschoolApp.emploi.home.search' | translate }}">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="search()">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span translate="global.field.id">ID</span></th>
+                    <th><span translate="smartschoolApp.emploi.title">Title</span></th>
+                    <th><span translate="smartschoolApp.emploi.start">Start</span></th>
+                    <th><span translate="smartschoolApp.emploi.end">End</span></th>
+                    <th><span translate="smartschoolApp.emploi.backgroundColor">BackgroundColor</span></th>
+                    <th><span translate="smartschoolApp.emploi.enseignantCours">enseignantCours</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="emploi in emplois track by emploi.id">
+                    <td><a ui-sref="emploi.detail({id:emploi.id})">{{emploi.id}}</a></td>
+                    <td>{{emploi.title}}</td>
+                    <td>{{emploi.start}}</td>
+                    <td>{{emploi.end}}</td>
+                    <td>{{emploi.backgroundColor}}</td>
+                    <td>
+                        <a ui-sref="enseignantCours.detail({id:emploi.enseignantCours.id})">{{emploi.enseignantCours.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="emploi.detail({id:emploi.id})"
+                                    class="btn btn-info btn-sm"> 
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="emploi.edit({id:emploi.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="emploi.delete({id:emploi.id})"
+                                    class="btn btn-danger btn-sm">                                    
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

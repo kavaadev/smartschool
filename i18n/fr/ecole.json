@@ -1,0 +1,33 @@
+{
+    "smartschoolApp": {
+        "ecole" : {
+            "home": {
+                "title": "Ecoles",
+                "createLabel": "Créer une nouvelle Ecole",
+                "createOrEditLabel": "Création ou modification de l'Ecole {{intitule}}",
+                "search": "Chercher une école"
+            },
+            "created": "Une nouvelle Ecole a été créée avec l'identifiant {{ param }}",
+            "updated": "L'école avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "L'école avec l'identifiant {{ param }} a été supprimée",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer l'école {{ intitule }} ?"
+            },
+            "detail": {
+                "title": "{{ intitule }}"
+            },
+            "intitule": "Intitulé",
+            "adresse": "Adresse",
+            "siteWeb": "Site web",
+            "categorie": "Catégorie",
+            "gpsLatitude": "Latitude",
+            "gpsLongitude": "Longitude",
+            "user": "Directeur",
+            "pays": "Pays",
+            "region": "Région",
+            "ville": "Ville",
+            "classeType": "Classes Types"
+        }
+    }
+}
+

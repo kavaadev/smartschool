@@ -1,0 +1,26 @@
+{
+    "smartschoolApp": {
+        "inscription" : {
+            "home": {
+                "title": "La liste des Inscriptions",
+                "createLabel": "Créer une nouvelle Inscription",
+                "createOrEditLabel": "Créer ou éditer une Inscription",
+                "search": "Chercher une Inscription"
+            },
+            "created": "Une nouvelle Inscription a été créé avec l'identifiant {{ param }}",
+            "updated": "L'Inscription avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "L'Inscription avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer l'Inscription {{ id }} ?"
+            },
+            "detail": {
+                "title": "Inscription"
+            },
+            "situation": "Situation financière",
+            "classe": "Classe",
+            "anneeScolaire": "Année Scolaire",
+            "eleve": "Elève"
+        }
+    }
+}
+

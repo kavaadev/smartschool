@@ -1,0 +1,74 @@
+<div>
+    <div class="row">
+        <div class="col-sm-7">
+            <h2>Liste des écoles</h2>
+        </div>
+        <div class="col-sm-5 text-right">
+            <form name="searchForm" class="form-inline">
+                <div class="form-group p-r">
+                    <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="{{ 'smartschoolApp.ecole.home.search' | translate }}">
+                </div>
+                <button class="btn btn-info" ng-click="search()" tooltip="Chercher">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+                <button class="btn btn-primary" ui-sref="ecole.new" id="ecole-new" tooltip="Ajouter" >
+                    <span class="glyphicon glyphicon-plus"></span>
+
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <th jh-sort-by="intitule">Nom<span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="categorie"><span translate="smartschoolApp.ecole.categorie">Categorie</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="user.id">Directeur<span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="pays.id"><span translate="smartschoolApp.ecole.pays">pays</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="ville.id"><span translate="smartschoolApp.ecole.ville">ville</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="ecole in ecoles track by ecole.id">
+                    <td>{{ecole.intitule}}</td>
+                    <td translate="{{'smartschoolApp.Categorie.' + ecole.categorie}}">{{ecole.categorie}}</td>
+                    <td>
+                        {{ecole.user.firstName}} {{ecole.user.lastName}}
+                    </td>
+                    <td>
+                        <a ui-sref="pays.detail({id:ecole.pays.id})">{{ecole.pays.intitule}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="ville.detail({id:ecole.ville.id})">{{ecole.ville.intitule}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="ecole.detail({id:ecole.id})"
+                                    class="btn btn-info btn-sm" id="ecole-detail">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="ecole.edit({id:ecole.id})"
+                                    class="btn btn-primary btn-sm" id="ecole-edit">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="ecole.delete({id:ecole.id})"
+                                    class="btn btn-danger btn-sm" id="ecole-delete">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <uib-pagination class="pagination-sm" total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pagination>
+    </div>
+</div>

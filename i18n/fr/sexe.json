@@ -1,0 +1,11 @@
+{
+    "smartschoolApp": {
+        "Sexe" : {
+            "null": "",
+            "Fille": "Fille",
+            "Garcon": "Garçon",
+            "Masculin": "M",
+            "Feminin": "F"
+        }
+    }
+}

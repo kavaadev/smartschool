@@ -1,0 +1,25 @@
+{
+    "smartschoolApp": {
+        "systemeEducatif" : {
+            "home": {
+                "title": "SystemeEducatifs",
+                "createLabel": "Create a new SystemeEducatif",
+                "createOrEditLabel": "Create or edit a SystemeEducatif",
+                "search": "Search for SystemeEducatif"
+            },
+            "created": "A new SystemeEducatif is created with identifier {{ param }}",
+            "updated": "A SystemeEducatif is updated with identifier {{ param }}",
+            "deleted": "A SystemeEducatif is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete SystemeEducatif {{ id }}?"
+            },
+            "detail": {
+                "title": "SystemeEducatif"
+            },
+            "intitule": "Intitule",
+            "abreviation": "Abreviation",
+            "description": "Description",
+            "classeType": "ClasseType"
+        }
+    }
+}

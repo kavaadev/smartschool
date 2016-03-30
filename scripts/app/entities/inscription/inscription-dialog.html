@@ -1,0 +1,50 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myInscriptionLabel" translate="smartschoolApp.inscription.home.createOrEditLabel">Create or edit a Inscription</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="inscription.situation" id="field_situation" ng-true-value="true" ng-false-value="false">
+                        <label translate="smartschoolApp.inscription.situation" for="field_situation">
+                            Situation
+                        </label>
+                    </label>
+                </div>
+        </div>
+        <div class="form-group">
+            <label translate="smartschoolApp.inscription.classe" for="field_classe">classe</label>
+            <select class="form-control" id="field_classe" name="classe" ng-model="inscription.classe" ng-options="classe as classe.intitule for classe in classes track by classe.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="smartschoolApp.inscription.anneeScolaire" for="field_anneeScolaire">anneeScolaire</label>
+            <select class="form-control" id="field_anneeScolaire" name="anneeScolaire" ng-model="inscription.anneeScolaire" ng-options="anneeScolaire as anneeScolaire.intitule for anneeScolaire in anneescolaires track by anneeScolaire.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="smartschoolApp.inscription.eleve" for="field_eleve">eleve</label>
+            <select class="form-control" id="field_eleve" name="eleve" ng-model="inscription.eleve" ng-options='eleve as (eleve.nom + " " + eleve.prenom) for eleve in eleves track by eleve.id'>
+                <option value="">{{eleve.prenom}}</option>
+            </select>
+        </div>
+
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary" id="save-new-inscription">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

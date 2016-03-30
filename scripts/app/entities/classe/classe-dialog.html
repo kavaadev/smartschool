@@ -1,0 +1,62 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myClasseLabel" translate="smartschoolApp.classe.home.createOrEditLabel">Create or edit a Classe</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+
+        <div class="form-group">
+            <label class="control-label" translate="smartschoolApp.classe.intitule" for="field_intitule">Intitule</label>
+            <input type="text" class="form-control" name="intitule" id="field_intitule"
+                    ng-model="classe.intitule"
+                    required />
+            <div ng-show="editForm.intitule.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.intitule.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="smartschoolApp.classe.nombreMax" for="field_nombreMax">NombreMax</label>
+            <input type="number" class="form-control" name="nombreMax" id="field_nombreMax"
+                    ng-model="classe.nombreMax"
+                    required />
+            <div ng-show="editForm.nombreMax.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.nombreMax.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.nombreMax.$error.number" translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label translate="smartschoolApp.classe.classeType" for="field_classeType">classeType</label>
+            <select class="form-control" id="field_classeType" name="classeType" ng-model="classe.classeType" ng-options="classeType as classeType.intitule for classeType in classetypes track by classeType.id">
+                <option value=""></option>
+            </select>
+        </div>
+
+        <div class="form-group" style="visibility: hidden">
+            <labelfor  ="field_classeType">Ecole</label>
+            <select class="form-control" id="field_ecole" name="ecole" ng-model="classe.ecole" ng-options="ecole as ecole.intitule for ecole in ecoles track by ecole.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary" id="save-new-classe">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

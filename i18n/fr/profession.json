@@ -1,0 +1,23 @@
+{
+    "smartschoolApp": {
+        "profession" : {
+            "home": {
+                "title": "Professions",
+                "createLabel": "Créer un nouveau Profession",
+                "createOrEditLabel": "Créer ou éditer un Profession",
+                "search": "Recherche  Profession"
+            },
+            "created": "Un nouveau Profession a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Profession avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Profession avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Profession {{ id }} ?"
+            },
+            "detail": {
+                "title": "Profession"
+            },
+            "intitule": "Intitule"
+        }
+    }
+}
+

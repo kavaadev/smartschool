@@ -1,0 +1,238 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myEleveLabel" translate="smartschoolApp.eleve.home.createOrEditLabel">Create or edit a Eleve</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group" ngf-drop ngf-change="setPhoto($file, eleve)" ngf-pattern="'image/*'">
+                    <label class="control-label" translate="smartschoolApp.eleve.photo" for="field_photo">Photo</label>
+                    <div>
+                        <img data-ng-src="{{'data:' + eleve.photoContentType + ';base64,' + eleve.photo}}" style="max-height: 100px;" ng-if="eleve.photo"/>
+                        <div class="help-block clearfix">
+                            <span class="pull-left">{{eleve.photoContentType}} {{byteSize(eleve.photo)}}</span>
+                            <button ng-click="eleve.photo=null;eleve.photoContentType=null;"
+                                    ng-if="eleve.photo"
+                                    class="btn btn-default btn-xs pull-right">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                        </div>
+                        <button type="file" ngf-select class="btn btn-default btn-block" style="margin: 0px 0px;"
+                                ngf-change="setPhoto($file, eleve)" accept="image/*" translate="entity.action.addimage" id="photo">
+                            Add image
+                        </button>
+                    </div>
+                    <input type="hidden" class="form-control" name="photo" id="field_photo"
+                           ng-model="eleve.photo"
+                    />
+                    <input type="hidden" class="form-control" name="photoContentType" id="field_photoContentType"
+                           ng-model="eleve.photoContentType" />
+                </div>
+                <div class="form-group">
+                    <label class="control-label" translate="smartschoolApp.eleve.identifiantEleve" for="field_identifiantEleve" >Identifiant</label>
+                    <input type="text" class="form-control" name="identifiantEleve" id="field_identifiantEleve"
+                           ng-model="eleve.identifiantEleve"
+                    />
+                </div>
+        <div class="form-group">
+
+            <label class="control-label" translate="smartschoolApp.eleve.nom" for="field_nom">Nom</label>
+            <input type="text" class="form-control" name="nom" id="field_nom"
+                    ng-model="eleve.nom"
+                    required />
+            <div ng-show="editForm.nom.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.nom.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="smartschoolApp.eleve.prenom" for="field_prenom">Prenom</label>
+            <input type="text" class="form-control" name="prenom" id="field_prenom"
+                    ng-model="eleve.prenom"
+                    required />
+            <div ng-show="editForm.prenom.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.prenom.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+                <div class="form-group">
+                    <label class="control-label" translate="smartschoolApp.eleve.sexe" for="field_sexe">Sexe</label>
+                    <select class="form-control" name="sexe" ng-model="eleve.sexe" id="field_sexe">
+                        <option value="Fille" translate="smartschoolApp.Sexe.Fille">Fille</option>
+                        <option value="Garcon" translate="smartschoolApp.Sexe.Garcon">Garcon</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" translate="smartschoolApp.eleve.dateNaissance" for="field_dateNaissance">Date de Naissance</label>
+                    <input id="field_dateNaissance" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="eleve.dateNaissance" is-open="datePickerForDateNaissance.status.opened"
+
+                           required />
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="datePickerForDateNaissanceOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+                    <div ng-show="editForm.nom.$invalid">
+                        <p class="help-block"
+                           ng-show="editForm.nom.$error.required" translate="entity.validation.required">
+                            This field is required.
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label  for="field_pays"><span translate="smartschoolApp.eleve.pays">Nationalité</span></label>
+                    <select class="form-control" id="field_pays" name="pays" ng-model="eleve.pays" ng-options="pays as pays.intitule for pays in payss track by pays.id"  required>
+
+                    </select>
+                    <div ng-show="editForm.nom.$invalid">
+                        <p class="help-block"
+                           ng-show="editForm.nom.$error.required" translate="entity.validation.required">
+                            This field is required.
+                        </p>
+                    </div>
+                </div>
+
+            <div class="form-group">
+                <label class="control-label" translate="smartschoolApp.eleve.numeroAutorisation" for="field_numeroAutorisation">Numero Autorisation</label>
+                <input type="text" class="form-control" name="numeroAutorisation" id="field_numeroAutorisation"
+                       ng-model="eleve.numeroAutorisation"
+                />
+            </div>
+                <div class="checkbox">
+                            <label>
+                                <input type="checkbox" ng-model="eleve.authorisationSortie" id="field_authorisationSortie"
+                                                          ng-true-value="true" ng-false-value="false">
+                                <label translate="smartschoolApp.eleve.authorisationSortie" for="field_authorisationSortie">
+                                    Situation
+                                </label>
+                            </label>
+                </div>
+
+            <div class="form-group">
+
+                <label class="control-label" translate="smartschoolApp.eleve.lieuNaissance" for="field_lieu_naissance">Lieu Naissance</label>
+                <input type="text" class="form-control" name="lieu_naissance" id="field_lieu_naissance"
+                       ng-model="eleve.lieu_naissance"
+                />
+            </div>
+                <div class="form-group">
+                    <label class="control-label" translate="smartschoolApp.eleve.etablissementOrigine" for="field_etablissementOrigine">Etablissement d'Origine</label>
+                    <input type="text" class="form-control" name="etablissementOrigine" id="field_etablissementOrigine"
+                           ng-model="eleve.etablissementOrigine"/>
+                </div>
+
+        </div>
+
+
+        <div class="col-sm-6" style="background:#FFFFFF">
+            <div class="form-group" >
+                <label class="control-label" translate="smartschoolApp.eleve.datePremiereInscription" for="field_datePremiereInscription">Date de la Premiere Inscription</label>
+
+                <input id="field_datePremiereInscription" type="text" class="form-control " uib-datepicker-popup="{{dateformat}}" ng-model="eleve.datePremiereInscription" is-open="datePickerForDatePremiereInscription.status.opened"
+                />
+
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="datePickerForDatePremiereInscriptionOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+            </div>
+            <div class="form-group">
+                <label class="control-label" translate="smartschoolApp.eleve.dateSortie" for="field_dateSortie">Date de Sortie</label>
+                <input id="field_dateSortie" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="eleve.dateSortie" is-open="datePickerForDateSortie.status.opened"/>
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="datePickerForDateSortieOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+            </div>
+
+            <div class="form-group">
+
+            <label class="control-label" translate="smartschoolApp.eleve.nomPere" for="field_nom_pere">Nom Pére</label>
+            <input type="text" class="form-control" name="nom_pere" id="field_nom_pere"
+                   ng-model="eleve.nom_pere"
+            />
+
+        </div>
+            <div class="form-group">
+
+                <label class="control-label" translate="smartschoolApp.eleve.nomMere" for="field_nom_mere">Nom Mére</label>
+                <input type="text" class="form-control" name="nom_mere" id="field_nom_mere"
+                       ng-model="eleve.nom_mere"
+                />
+
+            </div>
+        <div class="form-group">
+            <label class="control-label" translate="smartschoolApp.eleve.telParent" for="field_telParent">Téléphone Parent</label>
+            <input type="text" class="form-control" name="telParent" ng-pattern="/^[0-9]+$/" id="field_telParent"
+                    ng-model="eleve.telParent"  required/>
+            <div ng-show="editForm.nom.$invalid">
+                <p class="help-block"
+                   ng-show="editForm.nom.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+            <div class="form-group">
+                <label class="control-label" translate="smartschoolApp.eleve.telMere" for="field_tel_mere">Téléphone Parent</label>
+                <input type="text" class="form-control" name="tel_mere" ng-pattern="/^[0-9]+$/" id="field_tel_mere"
+                       ng-model="eleve.tel_mere"  />
+                <div ng-show="editForm.nom.$invalid">
+                    <p class="help-block"
+                       ng-show="editForm.nom.$error.required" translate="entity.validation.required">
+                        This field is required.
+                    </p>
+                </div>
+            </div>
+        <div class="form-group">
+            <label class="control-label" translate="smartschoolApp.eleve.adresse" for="field_adresse">Adresse</label>
+            <input type="text" class="form-control" name="adresse" id="field_adresse"
+                    ng-model="eleve.adresse"/>
+        </div>
+
+        <div class="form-group">
+                <label class="control-label" translate="smartschoolApp.eleve.mail" for="field_mail">Email</label>
+
+            <input type="email" class="form-control" name="mail" id="field_mail" ng-model="eleve.mail"/>
+        </div>
+
+
+
+
+
+        <div class="form-group">
+            <label  for="field_profession">Profession des parents</label>
+            <select class="form-control" id="field_profession" name="profession" ng-model="eleve.profession" ng-options="profession as profession.intitule for profession in professions track by profession.id">
+                <option value=""></option>
+            </select>
+        </div>
+
+
+
+
+
+
+
+        </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="smartschoolApp.eleve.commentaire" for="field_commentaire">Commentaire</label>
+            <textarea rows="4" cols="50" type="text" class="form-control" name="commentaire" id="field_commentaire"
+                      ng-model="eleve.commentaire"/>
+        </div>
+
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+            </button>
+            <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary" id="save-new-eleve">
+                <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+            </button>
+        </div>
+    </div>
+</form>

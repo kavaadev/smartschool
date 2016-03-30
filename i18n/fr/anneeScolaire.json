@@ -1,0 +1,27 @@
+{
+    "smartschoolApp": {
+        "anneeScolaire" : {
+            "home": {
+                "title": "Les Années Scolaires",
+                "createLabel": "Créer une nouvelle Année Scolaire",
+                "createOrEditLabel": "Créer ou éditer une Année Scolaire",
+                "search": "Chercher une Année Scolaire"
+            },
+            "created": "Une nouvelle Année Scolaire a été créé avec l'identifiant {{ param }}",
+            "updated": "L'année Scolaire avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "L'année Scolaire avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le AnneeScolaire {{ id }} ?"
+            },
+            "detail": {
+                "title": "Années Scolaires"
+            },
+            "intitule": "Intitulé",
+            "dateDebut": "Date Début",
+            "dateFin": "Date Fin",
+            "enseignantCours": "Enseignant Cours",
+            "inscription": "Inscription"
+        }
+    }
+}
+

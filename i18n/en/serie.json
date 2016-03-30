@@ -1,0 +1,23 @@
+{
+    "smartschoolApp": {
+        "serie" : {
+            "home": {
+                "title": "Series",
+                "createLabel": "Create a new Serie",
+                "createOrEditLabel": "Create or edit a Serie",
+                "search": "Search for Serie"
+            },
+            "created": "A new Serie is created with identifier {{ param }}",
+            "updated": "A Serie is updated with identifier {{ param }}",
+            "deleted": "A Serie is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Serie {{ id }}?"
+            },
+            "detail": {
+                "title": "Serie"
+            },
+            "intitule": "Intitule",
+            "classeType": "ClasseType"
+        }
+    }
+}

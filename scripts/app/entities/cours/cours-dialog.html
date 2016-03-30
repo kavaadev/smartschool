@@ -1,0 +1,78 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" id="cancel-new-cours" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myCoursLabel" translate="smartschoolApp.cours.home.createOrEditLabel">Create or edit a Cours</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+
+        <div class="form-group">
+            <label class="control-label" translate="smartschoolApp.cours.intitule" for="field_intitule">Intitule</label>
+            <input type="text" class="form-control" name="intitule" id="field_intitule"
+                    ng-model="cours.intitule"
+                    required />
+            <div ng-show="editForm.intitule.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.intitule.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="smartschoolApp.cours.coefficient" for="field_coefficient">Coefficient</label>
+            <input type="number" class="form-control" name="coefficient" id="field_coefficient"
+                    ng-model="cours.coefficient"
+                    required min="1" />
+            <div ng-show="editForm.coefficient.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.coefficient.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.coefficient.$error.min" translate="entity.validation.min" translate-value-min="1">
+                    This field should be more than 1.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.coefficient.$error.number" translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="cours.optionnel" id="field_optionnel"
+                                                  ng-true-value="true" ng-false-value="false">
+                        <label translate="smartschoolApp.cours.optionnel" for="field_optionnel">
+                            Optionnel
+                        </label>
+                    </label>
+                </div>
+        </div>
+
+
+        <div class="form-group">
+            <label translate="smartschoolApp.cours.classeType" for="field_classeType">classeType</label>
+            <select class="form-control" id="field_classeType" name="classeType" ng-model="cours.classeType" ng-options="classeType as classeType.intitule for classeType in classetypes track by classeType.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="smartschoolApp.cours.matiere" for="field_matiere">matiere</label>
+            <select class="form-control" id="field_matiere" name="matiere" ng-model="cours.matiere" ng-options="matiere as matiere.intitule for matiere in matieres track by matiere.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default"   data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary" id="save-new-cours">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

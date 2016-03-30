@@ -1,0 +1,26 @@
+{
+    "smartschoolApp": {
+        "region" : {
+            "home": {
+                "title": "Règions",
+                "createLabel": "Créer une nouvelle Règion",
+                "createOrEditLabel": "Créer ou éditer une Règion",
+                "search": "Chercher une Règion"
+            },
+            "created": "Une nouvelle Règion a été créé avec l'identifiant {{ param }}",
+            "updated": "La Règion avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "La Règion avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer la Règion {{ id }} ?"
+            },
+            "detail": {
+                "title": "Règion"
+            },
+            "intitule": "Intitulé",
+            "pays": "Pays",
+            "ville": "Ville",
+            "ecole": "Ecole"
+        }
+    }
+}
+

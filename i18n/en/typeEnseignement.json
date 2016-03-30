@@ -1,0 +1,23 @@
+{
+    "smartschoolApp": {
+        "typeEnseignement" : {
+            "home": {
+                "title": "TypeEnseignements",
+                "createLabel": "Create a new TypeEnseignement",
+                "createOrEditLabel": "Create or edit a TypeEnseignement",
+                "search": "Search for TypeEnseignement"
+            },
+            "created": "A new TypeEnseignement is created with identifier {{ param }}",
+            "updated": "A TypeEnseignement is updated with identifier {{ param }}",
+            "deleted": "A TypeEnseignement is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete TypeEnseignement {{ id }}?"
+            },
+            "detail": {
+                "title": "TypeEnseignement"
+            },
+            "intitule": "Intitule",
+            "classeType": "ClasseType"
+        }
+    }
+}

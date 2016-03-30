@@ -1,0 +1,176 @@
+<div>
+    <div class="row">
+        <div class="col-sm-7">
+            <button class="btn btn-primary" ui-sref="ecole.detail({id:ecole.id})">
+                <span class="glyphicon glyphicon-arrow-left"></span> {{ecole.intitule}}
+            </button>
+            <h2 translate="smartschoolApp.enseignant.home.title">Enseignants</h2>
+
+        </div>
+        <div class="col-sm-5 text-right">
+            <form name="searchForm" class="form-inline">
+                <div class="form-group p-r">
+                    <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="{{ 'smartschoolApp.enseignant.home.search' | translate }}">
+                </div>
+                <button class="btn btn-info btn-sm"  ng-click="search()" tooltip="Chercher">
+                    <i class="glyphicon glyphicon-search"></i>
+                </button>
+                <button class="btn btn-primary" ui-sref="enseignant.new" id="enseignant-new">
+                    <span class="glyphicon glyphicon-plus"></span>
+
+                </button>
+            </form>
+        </div>
+    </div>
+    <jh-alert></jh-alert>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <th jh-sort-by="nom"><span translate="smartschoolApp.enseignant.nom">Nom</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="prenom"><span translate="smartschoolApp.enseignant.prenom">Prenom</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="dateNaissance"><span translate="smartschoolApp.enseignant.dateNaissance">Date Naissance</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="dateNaissance"><span translate="smartschoolApp.enseignant.sexe">Sexe</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="diplome"><span translate="smartschoolApp.enseignant.diplome">Diplome</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="dateEntree"><span translate="smartschoolApp.enseignant.dateEntree">DateEntree</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="pays.id"><span translate="smartschoolApp.enseignant.pays">Nationalité</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cin"><span translate="smartschoolApp.enseignant.identifiantSocial">Identifiant Social</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="enseignant in enseignants track by enseignant.id">
+                    <td>{{enseignant.nom}}</td>
+                    <td>{{enseignant.prenom}}</td>
+                    <td>{{enseignant.dateNaissance | date:'dd-MM-yy'}}</td>
+                    <td>{{enseignant.sexe}}</td>
+                    <td>{{enseignant.diplome}}</td>
+                        <td>{{enseignant.dateEntree | date:'dd-MM-yy'}}</td>
+
+                    <td>
+                        {{enseignant.pays.intitule}}
+                    </td>
+                    <td>{{enseignant.identifiantSocial}}</td>
+
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="enseignant.detail({id:enseignant.id})"
+                                    class="btn btn-info btn-sm" id="enseignant-detail">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="enseignant.edit({id:enseignant.id})"
+                                    class="btn btn-primary btn-sm" id="enseignant-edit">
+                                <span class="glyphicon glyphicon-pencil" ></span>
+
+                            </button>
+                            <button type="submit"
+                                    ui-sref="enseignant.delete({id:enseignant.id})"
+                                    class="btn btn-danger btn-sm" id="enseignant-delete">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h4>Exporter Excel
+            <button class="btn btn-info" ng-click="exportData()" ng-show="enseignantsxls.length">Permanents</button>
+            <button class="btn btn-info" ng-click="exportDataVacataires()" ng-show="enseignantsxls.length">Vacataires</button></h4>
+
+
+        <!-- FILE EXPORT -->
+        <div id="exportable" style="display:none">
+            <table style="font-size:20px;">
+                <thead>
+                <tr>
+                    <th align="left">{{ecole.intitule}}</th>
+                </tr>
+                <tr>
+                    <th align="left">{{ecole.anneeScolaire.intitule}}</th>
+                </tr>
+
+                <tr></tr>
+                <tr>
+                    <th align="left">Enseignants permanents</th>
+                </tr>
+                <tr></tr>
+                </thead>
+
+
+            </table>
+            <table width="100%" border="1" style="font-size:20px;">
+                <thead>
+                <tr>
+                    <th>Num</th>
+                    <th>Nom et prenom</th>
+                    <th>Date de naissance</th>
+                    <th>Sexe</th>
+                    <th>Date de recrutement</th>
+                    <th>Diplome</th>
+                    <th>CNSS</th>
+                </tr>
+                <tbody>
+                <tr ng-repeat="enseignant in enseignantsxls | filter:{vacataire:false}">
+                    <td align="left">{{enseignant.id}}</td>
+                    <td align="left">{{enseignant.nom}} {{enseignant.prenom}}</td>
+                    <td align="left">{{enseignant.dateNaissance | date:'dd-MM-yy'}}</td>
+                    <td align="center">{{enseignant.sexe}}</td>
+                    <td align="left">{{enseignant.dateEntree | date:'dd-MM-yy'}}</td>
+                    <td align="center">{{enseignant.diplome}}</td>
+                    <td align="center">{{enseignant.identifiantSocial}}</td>
+                </tr>
+                </tbody>
+                </thead>
+            </table>
+        </div>
+        <!-- / FILE EXPORT -->
+        <!-- FILE EXPORT -->
+        <div id="vacatairexls" style="display:none">
+            <table style="font-size:20px;">
+                <thead>
+                <tr>
+                    <th align="left">{{ecole.intitule}}</th>
+                </tr>
+                <tr>
+                    <th align="left">{{ecole.anneeScolaire.intitule}}</th>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <th align="left">Enseignants vacataires</th>
+                </tr>
+                <tr></tr>
+                </thead>
+            </table>
+            <table width="100%" border="1" style="font-size:20px;">
+                <thead>
+                <tr>
+                    <th>Num</th>
+                    <th>Nom et prenom</th>
+                    <th>Date de naissance</th>
+                    <th>Sexe</th>
+                    <th>Date de recrutement</th>
+                    <th>Diplome</th>
+                </tr>
+                <tbody>
+                <tr ng-repeat="enseignant in enseignantsxls | filter:{vacataire:true}">
+                    <td align="left">{{enseignant.id}}</td>
+                    <td align="left">{{enseignant.nom}} {{enseignant.prenom}}</td>
+                    <td align="left">{{enseignant.dateNaissance | date:'dd-MM-yy'}}</td>
+                    <td align="center">{{enseignant.sexe}}</td>
+                    <td align="left">{{enseignant.dateEntree | date:'dd-MM-yy'}}</td>
+                    <td align="center">{{enseignant.diplome}}</td>
+                </tr>
+                </tbody>
+                </thead>
+            </table>
+        </div>
+        <!-- / FILE EXPORT -->
+    </div>
+    <div  ng-grid="ngGridView"></div>
+    <div class="text-center">
+        <uib-pagination class="pagination-sm" total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pagination>
+    </div>
+</div>

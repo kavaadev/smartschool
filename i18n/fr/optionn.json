@@ -1,0 +1,24 @@
+{
+    "smartschoolApp": {
+        "optionn" : {
+            "home": {
+                "title": "Options",
+                "createLabel": "Créer une nouvelle Option",
+                "createOrEditLabel": "Créer ou éditer une Option",
+                "search": "Chercher une  Option"
+            },
+            "created": "Une nouvelle Option a été créé avec l'identifiant {{ param }}",
+            "updated": "L'Option avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "L'Option avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer l'Option {{ id }} ?"
+            },
+            "detail": {
+                "title": "Option"
+            },
+            "intitule": "Intitulé",
+            "classeType": "Classe Type"
+        }
+    }
+}
+

@@ -1,0 +1,24 @@
+{
+    "smartschoolApp": {
+        "typeEnseignement" : {
+            "home": {
+                "title": "Types d'enseignement",
+                "createLabel": "Créer un nouveau Type d'nseignement",
+                "createOrEditLabel": "Créer ou éditer un Type d'enseignement",
+                "search": "Chercher un Type d'enseignement"
+            },
+            "created": "Un nouveau Type Enseignement a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Type Enseignement avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Type Enseignement avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Type Enseignement {{ id }} ?"
+            },
+            "detail": {
+                "title": "Type d'enseignement"
+            },
+            "intitule": "Intitulé",
+            "classeType": "Classes Types"
+        }
+    }
+}
+

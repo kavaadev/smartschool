@@ -1,0 +1,26 @@
+{
+    "smartschoolApp": {
+        "noteCours" : {
+            "home": {
+                "title": "NoteCourss",
+                "createLabel": "Créer un nouveau NoteCours",
+                "createOrEditLabel": "Créer ou éditer un NoteCours",
+                "search": "Search for NoteCours"
+            },
+            "created": "Un nouveau NoteCours a été créé avec l'identifiant {{ param }}",
+            "updated": "Le NoteCours avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le NoteCours avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le NoteCours {{ id }} ?"
+            },
+            "detail": {
+                "title": "NoteCours"
+            },
+            "note": "Note",
+            "commentaire": "Commentaire",
+            "cours": "Cours",
+            "inscription": "Inscription"
+        }
+    }
+}
+

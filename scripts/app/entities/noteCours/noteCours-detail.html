@@ -1,0 +1,54 @@
+
+<div>
+    <h2><span translate="smartschoolApp.noteCours.detail.title">NoteCours</span> {{noteCours.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="smartschoolApp.noteCours.note">Note</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{noteCours.note}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="smartschoolApp.noteCours.commentaire">Commentaire</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{noteCours.commentaire}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="smartschoolApp.noteCours.cours">cours</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="cours.detail({id:noteCours.cours.id})">{{noteCours.cours.id}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="smartschoolApp.noteCours.inscription">inscription</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="inscription.detail({id:noteCours.inscription.id})">{{noteCours.inscription.id}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

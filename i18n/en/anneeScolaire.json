@@ -1,0 +1,26 @@
+{
+    "smartschoolApp": {
+        "anneeScolaire" : {
+            "home": {
+                "title": "AnneeScolaires",
+                "createLabel": "Create a new AnneeScolaire",
+                "createOrEditLabel": "Create or edit a AnneeScolaire",
+                "search": "Search for AnneeScolaire"
+            },
+            "created": "A new AnneeScolaire is created with identifier {{ param }}",
+            "updated": "A AnneeScolaire is updated with identifier {{ param }}",
+            "deleted": "A AnneeScolaire is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete AnneeScolaire {{ id }}?"
+            },
+            "detail": {
+                "title": "AnneeScolaire"
+            },
+            "intitule": "Intitule",
+            "dateDebut": "DateDebut",
+            "dateFin": "DateFin",
+            "enseignantCours": "EnseignantCours",
+            "inscription": "Inscription"
+        }
+    }
+}

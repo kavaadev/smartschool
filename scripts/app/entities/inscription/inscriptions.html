@@ -1,0 +1,120 @@
+<div>
+    <div class="row">
+        <div class="col-sm-7">
+            <button class="btn btn-primary" ui-sref="ecole.detail({id:ecole.id})">
+                <span class="glyphicon glyphicon-arrow-left"></span> {{ecole.intitule}}
+            </button>
+            <h2 translate="smartschoolApp.inscription.home.title">Inscriptions</h2>
+        </div>
+        <div class="col-sm-5 text-right">
+            <form name="searchForm" class="form-inline">
+
+                <div>
+                    <input  type="text" class="form-control" ng-model="searchQuery" value="" id="searchQuery">
+                    <button class="btn btn-info" ng-click="recherche(ecole.id)" tooltip="Chercher" id="recherche" >
+                        <span class="glyphicon glyphicon-search" ></span>
+                    </button>
+                <button class="btn btn-primary" ui-sref="inscription.new" id="inscription-new">
+                    <span class="glyphicon glyphicon-plus"></span>
+
+                </button>
+                </div>
+
+                <div class="form-group">
+                    <label translate="smartschoolApp.inscription.anneeScolaire" for="field_anneeScolaire">anneeScolaire</label>
+                    <select class="form-control" id="field_anneeScolaire" name="anneeScolaire" ng-change="filterByAS()" ng-model="anneeScolaireC" ng-options="anneeScolaire as anneeScolaire.intitule for anneeScolaire in anneescolaires track by anneeScolaire.id" />
+
+
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <jh-alert></jh-alert>
+    <br/>
+    <div class="table-responsive">
+
+
+
+        <table class="jh-table table table-striped table-hover">
+            <thead>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <th jh-sort-by="eleve.id"><span translate="smartschoolApp.inscription.eleve">eleve</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="classe.id"><span translate="smartschoolApp.inscription.classe">classe</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th class="text-center" jh-sort-by="situation">$</span> <span class="glyphicon glyphicon-sort"></span></th>
+
+                    <th jh-sort-by="eleve.id" ><span>Naissance</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="eleve.id" ><span >Nationalité</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="eleve.id" ><span >N° Aut</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="eleve.id" ><span >Sexe</span> <span class="glyphicon glyphicon-sort"></span></th>
+
+                    <th></th>
+                </tr>
+
+
+            </thead>
+            <tbody>
+                <tr ng-repeat="inscription in inscriptions track by inscription.id">
+                    <td>
+                        <a ui-sref="eleve.detail({id:inscription.eleve.id})">{{inscription.eleve.nom}} {{inscription.eleve.prenom}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="classe.detail({id:inscription.classe.id})">{{inscription.classe.intitule}}</a>
+
+                    </td>
+                    <td>
+                        {{inscription.anneeScolaire.intitule}}
+                    </td>
+                    <td class="text-center">
+                        <i class="glyphicon"
+                           ng-class="{'glyphicon-ok text-success': inscription.situation,
+                                      'glyphicon-remove text-danger': !inscription.situation}"></i>
+                    </td>
+                    <td>
+                        <a ui-sref="eleve.detail({id:inscription.eleve.id})">{{inscription.eleve.dateNaissance | date:'mediumDate'}}</a>
+
+                    </td>
+                    <td>
+                        <a ui-sref="eleve.detail({id:inscription.eleve.id})">{{inscription.eleve.pays.intitule}}</a>
+
+                    </td>
+                    <td>
+                        <a ui-sref="eleve.detail({id:inscription.eleve.id})">{{inscription.eleve.numeroAutorisation}}</a>
+
+                    </td>
+                    <td>
+                        <a ui-sref="eleve.detail({id:inscription.eleve.id})">{{inscription.eleve.sexe}}</a>
+
+                    </td>
+
+
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="inscription.detail({id:inscription.id})"
+                                    class="btn btn-info btn-sm" id="inscription-det">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="inscription.edit({id:inscription.id})"
+                                    class="btn btn-primary btn-sm" id="inscription-edit">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="inscription.delete({id:inscription.id})"
+                                    class="btn btn-danger btn-sm" id="inscription-delete">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="text-center">
+        <uib-pagination class="pagination-sm" total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pagination>
+    </div>
+</div>

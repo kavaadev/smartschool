@@ -1,0 +1,25 @@
+{
+    "smartschoolApp": {
+        "noteCours" : {
+            "home": {
+                "title": "NoteCourss",
+                "createLabel": "Create a new NoteCours",
+                "createOrEditLabel": "Create or edit a NoteCours",
+                "search": "Search for NoteCours"
+            },
+            "created": "A new NoteCours is created with identifier {{ param }}",
+            "updated": "A NoteCours is updated with identifier {{ param }}",
+            "deleted": "A NoteCours is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete NoteCours {{ id }}?"
+            },
+            "detail": {
+                "title": "NoteCours"
+            },
+            "note": "Note",
+            "commentaire": "Commentaire",
+            "cours": "Cours",
+            "inscription": "Inscription"
+        }
+    }
+}

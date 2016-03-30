@@ -1,0 +1,30 @@
+{
+    "smartschoolApp": {
+        "classeType" : {
+            "home": {
+                "title": "La liste des Classes Types",
+                "createLabel": "Créer une nouvelle Classe Type",
+                "createOrEditLabel": "Créer ou éditer une Classe Type",
+                "search": "Chercher une Classe Type"
+            },
+            "created": "Une nouvelle Classe Type a été créé avec l'identifiant {{ param }}",
+            "updated": "La Classe Type avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "La Classe Type avec l'identifiant {{ param }} a été supprimée",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer la Classe Type {{ id }} ?"
+            },
+            "detail": {
+                "title": "Classe Type"
+            },
+            "intitule": "Intitulé",
+            "dateCreation": "Date Création",
+            "typeEnseignement": "Type d'Enseignement",
+            "cycle": "Cycle",
+            "niveau": "Niveau",
+            "filiere": "Filière",
+            "serie": "Serie",
+            "optionn": "Option"
+        }
+    }
+}
+

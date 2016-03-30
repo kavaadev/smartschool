@@ -1,0 +1,64 @@
+<div>
+    <div class="row">
+        <div class="col-sm-7">
+            <h2 translate="smartschoolApp.profession.home.title">Professions</h2>
+        </div>
+        <div class="col-sm-5 text-right">
+            <form name="searchForm" class="form-inline">
+                <div class="form-group p-r">
+                    <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="{{ 'smartschoolApp.profession.home.search' | translate }}">
+                </div>
+                <button class="btn btn-info btn-sm"  ng-click="search()" tooltip="Chercher">
+                    <i class="glyphicon glyphicon-search"></i>
+                </button>
+                <button class="btn btn-primary" ui-sref="profession.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <jh-alert></jh-alert>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="intitule"><span translate="smartschoolApp.profession.intitule">Intitule</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="profession in professions track by profession.id">
+                    <td><a ui-sref="profession.detail({id:profession.id})">{{profession.id}}</a></td>
+                    <td>{{profession.intitule}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="profession.detail({id:profession.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+
+                            </button>
+                            <button type="submit"
+                                    ui-sref="profession.edit({id:profession.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+
+                            </button>
+                            <button type="submit"
+                                    ui-sref="profession.delete({id:profession.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <uib-pager total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pager>
+</div>

@@ -1,0 +1,57 @@
+
+<div>
+    <h2><span translate="smartschoolApp.cours.detail.title">Cours </span> : {{cours.intitule}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="smartschoolApp.cours.intitule">Intitule</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{cours.intitule}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="smartschoolApp.cours.coefficient">Coefficient</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{cours.coefficient}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="smartschoolApp.cours.optionnel">Optionnel</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{cours.optionnel}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="smartschoolApp.cours.classeType">classeType</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="classeType.detail({id:cours.classeType.id})">{{cours.classeType.intitule}}</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="smartschoolApp.cours.matiere">matiere</span>
+                </td>
+                <td>
+                    <a class="form-control-static" ui-sref="matiere.detail({id:cours.matiere.id})">{{cours.matiere.intitule}}</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info" id="back">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

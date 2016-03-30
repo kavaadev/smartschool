@@ -1,0 +1,28 @@
+{
+    "smartschoolApp": {
+        "cours" : {
+            "home": {
+                "title": "La liste des Cours",
+                "createLabel": "Créer un nouveau Cours",
+                "createOrEditLabel": "Créer ou éditer un Cours",
+                "search": "Chercher un Cours"
+            },
+            "created": "Un nouveau Cours a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Cours avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Cours avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Cours {{ id }} ?"
+            },
+            "detail": {
+                "title": "Cours "
+            },
+            "intitule": "Intitulé",
+            "coefficient": "Coefficient",
+            "optionnel": "Optionel",
+            "classeType": "Niveau",
+            "enseignantCours": "Enseignant Cours",
+            "matiere": "Matière"
+        }
+    }
+}
+

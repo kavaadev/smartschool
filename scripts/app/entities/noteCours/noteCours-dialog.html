@@ -1,0 +1,50 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myNoteCoursLabel" translate="smartschoolApp.noteCours.home.createOrEditLabel">Create or edit a NoteCours</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="noteCours.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="smartschoolApp.noteCours.note" for="field_note">Note</label>
+            <input type="number" class="form-control" name="note" id="field_note"
+                    ng-model="noteCours.note"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="smartschoolApp.noteCours.commentaire" for="field_commentaire">Commentaire</label>
+            <input type="text" class="form-control" name="commentaire" id="field_commentaire"
+                    ng-model="noteCours.commentaire"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label translate="smartschoolApp.noteCours.cours" for="field_cours">cours</label>
+            <select class="form-control" id="field_cours" name="cours" ng-model="noteCours.cours" ng-options="cours as cours.id for cours in courss track by cours.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="smartschoolApp.noteCours.inscription" for="field_inscription">inscription</label>
+            <select class="form-control" id="field_inscription" name="inscription" ng-model="noteCours.inscription" ng-options="inscription as inscription.id for inscription in inscriptions track by inscription.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

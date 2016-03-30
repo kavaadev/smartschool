@@ -1,0 +1,127 @@
+
+<div>
+    <h2><span translate="smartschoolApp.enseignant.detail.title">Enseignant</span>: {{enseignant.nom}} {{enseignant.prenom}}</h2>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <table class="table table-striped">
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="smartschoolApp.enseignant.photo">Photo</span>
+                </td>
+                <td>
+                    <img data-ng-src="{{'data:' + enseignant.photoContentType + ';base64,' + enseignant.photo}}" style="max-width: 100%;" ng-if="enseignant.photo"/>
+                    <div>{{enseignant.photoContentType}}  {{byteSize(enseignant.photo)}}</div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="smartschoolApp.enseignant.cin">Cin</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{enseignant.cin}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="smartschoolApp.enseignant.nom">Nom</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{enseignant.nom}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="smartschoolApp.enseignant.prenom">Prenom</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{enseignant.prenom}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="smartschoolApp.enseignant.dateNaissance">DateNaissance</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{enseignant.dateNaissance | date:'mediumDate'}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="smartschoolApp.enseignant.sexe">Sexe</span>
+                </td>
+                <td>
+                    <span class="form-control-static" translate="{{'smartschoolApp.Sexe.' + enseignant.sexe}}">{{enseignant.sexe}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="smartschoolApp.enseignant.pays">pays</span>
+                </td>
+                <td>
+                    {{enseignant.pays.intitule}}
+                </td>
+            </tr>
+            </table>
+        </div>
+        <div class="col-sm-6">
+            <table class="table table-striped">
+            <tr>
+                <td>
+
+                    <span translate="smartschoolApp.enseignant.vacataire">Vacataire</span>
+                </td>
+                <td>
+                    <span class="glyphicon"   ng-class="{'glyphicon-ok text-success': enseignant.vacataire,
+                                      'glyphicon-remove text-danger': !enseignant.vacataire}"></span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <span translate="smartschoolApp.enseignant.diplome">Diplome</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{enseignant.diplome}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="smartschoolApp.enseignant.dateEntree">DateEntree</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{enseignant.dateEntree | date:'mediumDate'}}</span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <span translate="smartschoolApp.enseignant.matiere">matiere</span>
+                </td>
+                <td>
+                    <span ng-repeat="matiere in enseignant.matieres">
+                        <a class="form-control-static" ui-sref="matiere.detail({id: {{matiere.id}}})">{{matiere.id}}</a>{{$last ? '' : ', '}}
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td>
+                        <span translate="smartschoolApp.enseignant.identifiantSocial">identifiantSocial</span>
+                    </td>
+                    <td>
+                        <span class="form-control-static">{{enseignant.identifiantSocial}}</span>
+                    </td>
+                </tr>
+            </tbody>
+
+            </table>
+        </div>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info" id="back">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

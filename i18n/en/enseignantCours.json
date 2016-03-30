@@ -1,0 +1,25 @@
+{
+    "smartschoolApp": {
+        "enseignantCours" : {
+            "home": {
+                "title": "EnseignantCourss",
+                "createLabel": "Create a new EnseignantCours",
+                "createOrEditLabel": "Create or edit a EnseignantCours",
+                "search": "Search for EnseignantCours"
+            },
+            "created": "A new EnseignantCours is created with identifier {{ param }}",
+            "updated": "A EnseignantCours is updated with identifier {{ param }}",
+            "deleted": "A EnseignantCours is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete EnseignantCours {{ id }}?"
+            },
+            "detail": {
+                "title": "EnseignantCours"
+            },
+            "cours": "Cours",
+            "enseignant": "Enseignant",
+            "classe": "Classe",
+            "anneeScolaire": "AnneeScolaire"
+        }
+    }
+}

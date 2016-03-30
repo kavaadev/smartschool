@@ -1,0 +1,104 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myEcoleLabel">Création ou modification d'une école {{ecole.intitule}}</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <input type="hidden" class="form-control" id="id" name="id"
+                    ng-model="ecole.id" readonly />
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="control-label">Intitulé</label>
+                    <input type="text" class="form-control" name="intitule" id="field_intitule"
+                           ng-model="ecole.intitule"
+                           required />
+                    <div ng-show="editForm.intitule.$invalid">
+                        <p class="help-block"
+                           ng-show="editForm.intitule.$error.required" translate="entity.validation.required">
+                            This field is required.
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" translate="smartschoolApp.ecole.categorie" for="field_categorie">Categorie</label>
+                    <select  class="form-control" name="categorie" ng-model="ecole.categorie" id="field_categorie">
+                        <option value="Public" translate="smartschoolApp.Categorie.Public">Public</option>
+                        <option value="Privee" translate="smartschoolApp.Categorie.Privee">Privee</option>
+                        <option value="SemiPublic" translate="smartschoolApp.Categorie.SemiPublic">SemiPublic</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="field_siteWeb">Site web</label>
+                    <input placeholder="ex www.smartschool.edu" type="text" class="form-control" name="siteWeb" id="field_siteWeb"
+                           ng-model="ecole.siteWeb"
+                    />
+                </div>
+                <div class="form-group">
+                    <label translate="smartschoolApp.ecole.user" for="field_user">user</label>
+                    <select  class="form-control" id="field_user" name="user" ng-model="ecole.user" ng-options="user as user.login for user in users track by user.id">
+                        <option value=""></option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="control-label" translate="smartschoolApp.ecole.adresse" for="field_adresse">Adresse</label>
+                    <input type="text" class="form-control" name="adresse" id="field_adresse"
+                           ng-model="ecole.adresse"
+                    />
+                </div>
+                <div class="row">
+                    <div class="form-group col-sm-4">
+                        <label translate="smartschoolApp.ecole.pays" for="field_pays">pays</label>
+                        <select class="form-control" id="field_pays" name="pays" ng-model="ecole.pays" ng-options="pays as pays.intitule for pays in payss track by pays.id">
+                        </select>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label translate="smartschoolApp.ecole.region" for="field_region">region</label>
+                        <select class="form-control" id="field_region" name="region" ng-model="ecole.region" ng-options="region as region.intitule for region in ( regions | filter : {pays:ecole.pays}:true ) track by region.id">
+                        </select>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label translate="smartschoolApp.ecole.ville" for="field_ville">ville</label>
+                        <select class="form-control" id="field_ville" name="ville" ng-model="ecole.ville" ng-options="ville as ville.intitule for ville in ( villes | filter : {region:ecole.region}:true ) track by ville.id ">
+                        </select>
+                    </div>
+                </div>
+                <label class="control-label">Coordonnées GPS</label>
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <input type="text" class="form-control" name="gpsLatitude" id="field_gpsLatitude" placeholder="Latitude"
+                               ng-model="ecole.gpsLatitude"
+                        />
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <input type="text" class="form-control" name="gpsLongitude" id="field_gpsLongitude" placeholder="Longitude"
+                               ng-model="ecole.gpsLongitude"
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+
+        <div class="form-group">
+            <label translate="smartschoolApp.ecole.classeType" for="field_classeType">classeType</label>
+            <select class="form-control" id="field_classeType" multiple name="classeType" ng-model="ecole.classeTypes" ng-options="classeType as classeType.intitule for classeType in classetypes track by classeType.id"></select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary" id="save-new-ecole">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

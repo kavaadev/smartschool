@@ -1,0 +1,44 @@
+{
+    "smartschoolApp": {
+        "eleve" : {
+            "home": {
+                "title": "La liste des élèves",
+                "createLabel": "Créer un élève",
+                "createOrEditLabel": "Créer ou éditer un élève",
+                "search": "Chercher élève"
+            },
+            "created": "Un nouveau Eleve a été créé avec l'identifiant {{ param }}",
+            "updated": "L'Elève avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "L'Elève avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Elève {{ nom }} ?"
+            },
+            "detail": {
+                "title": "Elève :"
+            },
+            "nom": "Nom",
+            "prenom": "Prénom",
+            "telParent": "Tél Père",
+            "telMere": "Tél Mère",
+            "adresse": "Adresse",
+            "photo": "Photo",
+            "mail": "Email",
+            "dateNaissance": "Date Naissance",
+            "datePremiereInscription": "Date première inscription",
+            "dateSortie": "Date Sortie",
+            "sexe": "Sexe",
+            "lieuNaissance": "Lieux de Naissance",
+            "nomPere": "Nom du Père",
+            "nomMere": "Nom de la Mère",
+            "commentaire": "Commentaire",
+            "etablissementOrigine": "Etablissement d'origine",
+            "numeroAutorisation": "N° Aut",
+            "authorisationSortie": "Autorisation de sortie",
+            "identifiantEleve": "Identifiant",
+            "inscription": "Inscription",
+            "pays": "Nationalité",
+            "profession": "Profession des Parents"
+        }
+    }
+}
+

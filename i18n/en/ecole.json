@@ -1,0 +1,32 @@
+{
+    "smartschoolApp": {
+        "ecole" : {
+            "home": {
+                "title": "Ecoles",
+                "createLabel": "Create a new Ecole",
+                "createOrEditLabel": "Create or edit a Ecole",
+                "search": "Search for Ecole"
+            },
+            "created": "A new Ecole is created with identifier {{ param }}",
+            "updated": "A Ecole is updated with identifier {{ param }}",
+            "deleted": "A Ecole is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Ecole {{ id }}?"
+            },
+            "detail": {
+                "title": "Ecole"
+            },
+            "intitule": "Intitule",
+            "adresse": "Adresse",
+            "siteWeb": "SiteWeb",
+            "categorie": "Categorie",
+            "gpsLatitude": "GpsLatitude",
+            "gpsLongitude": "GpsLongitude",
+            "user": "User",
+            "pays": "Pays",
+            "region": "Region",
+            "ville": "Ville",
+            "classeType": "ClasseType"
+        }
+    }
+}

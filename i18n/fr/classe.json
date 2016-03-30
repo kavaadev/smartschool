@@ -1,0 +1,27 @@
+{
+    "smartschoolApp": {
+        "classe" : {
+            "home": {
+                "title": "La liste des Classes",
+                "createLabel": "Créer une nouvelle Classe",
+                "createOrEditLabel": "Créer ou éditer une Classe",
+                "search": "Chercher une Classe"
+            },
+            "created": "Une nouvelle Classe a été créée avec l'identifiant {{ param }}",
+            "updated": "Une Classe avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Une Classe avec l'identifiant {{ param }} a été supprimée",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer la Classe {{ id }} ?"
+            },
+            "detail": {
+                "title": "Classe"
+            },
+            "intitule": "Intitulé",
+            "nombreMax": "Nombre max d'élèves",
+            "classeType": "Niveau",
+            "inscription": "Inscription",
+            "enseignantCours": "Enseignant Cours"
+        }
+    }
+}
+

@@ -1,0 +1,205 @@
+
+<div>
+    <h2><span translate="smartschoolApp.eleve.detail.title">Eleve</span> {{eleve.nom}} {{eleve.prenom}}</h2>
+    <div class="row">
+        <div class="col-sm-6">
+            <table class="table table-striped">
+                <tbody>
+                <tr>
+                    <td>
+                        <span translate="smartschoolApp.eleve.photo">Photo</span>
+                    </td>
+                    <td>
+                        <img data-ng-src="{{'data:' + eleve.photoContentType + ';base64,' + eleve.photo}}" style="width: 200px;" ng-if="eleve.photo"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="smartschoolApp.eleve.identifiantEleve">identifiant Eleve</span>
+                    </td>
+                    <td>
+                        <span class="form-control-static">{{eleve.identifiantEleve}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="smartschoolApp.eleve.nom">Nom</span>
+                    </td>
+                    <td>
+                        <span class="form-control-static">{{eleve.nom}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="smartschoolApp.eleve.prenom">Prenom</span>
+                    </td>
+                    <td>
+                        <span class="form-control-static">{{eleve.prenom}}</span>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <span translate="smartschoolApp.eleve.dateNaissance">Date Naissance</span>
+                    </td>
+                    <td>
+                        <span class="form-control-static">{{eleve.dateNaissance | date:'mediumDate'}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="smartschoolApp.eleve.sexe">Sexe</span>
+                    </td>
+                    <td>
+                        <span class="form-control-static" translate="{{'smartschoolApp.Sexe.' + eleve.sexe}}">{{eleve.sexe}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="smartschoolApp.eleve.lieuNaissance">Lieux Naissance</span>
+                    </td>
+                    <td>
+                        <span class="form-control-static">{{eleve.lieu_naissance | date:'mediumDate'}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="smartschoolApp.eleve.numeroAutorisation">Numero Autorisation</span>
+                    </td>
+                    <td>
+                        <span class="form-control-static">{{eleve.numeroAutorisation}}</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <span translate="smartschoolApp.eleve.pays">Pays</span>
+                    </td>
+                    <td>
+                      {{eleve.pays.intitule}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="smartschoolApp.eleve.datePremiereInscription">Date Premiere Inscription</span>
+                    </td>
+                    <td>
+                        <span class="form-control-static">{{eleve.datePremiereInscription | date:'mediumDate'}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="smartschoolApp.eleve.authorisationSortie">Authorisation Sortie</span>
+                    </td>
+                    <td>
+
+                        <span class="glyphicon"   ng-class="{'glyphicon-ok text-success': eleve.authorisationSortie,
+                                      'glyphicon-remove text-danger': !eleve.authorisationSortie}"></span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-6">
+            <table class="table table-striped">
+                <tbody>
+                <tr>
+                    <td>
+                        <span translate="smartschoolApp.eleve.nomPere">nom Pere</span>
+                    </td>
+                    <td>
+                        <span class="form-control-static">{{eleve.nom_pere}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="smartschoolApp.eleve.telParent">Téléphone des Parents</span>
+                    </td>
+                    <td>
+                        <span class="form-control-static">{{eleve.telParent}}</span>
+                    </td>
+                </tr>
+                <tr>
+                <td>
+                    <span translate="smartschoolApp.eleve.nomMere">nom Mere</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{eleve.nom_mere}}</span>
+                </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="smartschoolApp.eleve.telMere">Téléphone Mere</span>
+                    </td>
+                    <td>
+                        <span class="form-control-static">{{eleve.tel_mere}}</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <span translate="smartschoolApp.eleve.mail">Mail</span>
+                    </td>
+                    <td>
+                        <span class="form-control-static">{{eleve.mail}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="smartschoolApp.eleve.adresse">Adresse</span>
+                    </td>
+                    <td>
+                        <span class="form-control-static">{{eleve.adresse}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="smartschoolApp.eleve.dateSortie">Date Sortie</span>
+                    </td>
+                    <td>
+                        <span class="form-control-static">{{eleve.dateSortie | date:'mediumDate'}}</span>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <span translate="smartschoolApp.eleve.etablissementOrigine">Etablissement d'Origine</span>
+                    </td>
+                    <td>
+                        <span class="form-control-static">{{eleve.etablissementOrigine}}</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <span translate="smartschoolApp.eleve.profession">Profession</span>
+                    </td>
+                    <td>
+                     {{eleve.profession.intitule}}
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <span translate="smartschoolApp.eleve.commentaire">Commentaire</span>
+                    </td>
+                    <td>
+                        <span class="form-control-static">{{eleve.commentaire}}</span>
+                    </td>
+                </tr>
+                </tbody>
+
+
+            </table>
+        </div>
+    </div>
+
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info" id="back">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

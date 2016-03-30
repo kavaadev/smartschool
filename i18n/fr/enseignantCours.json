@@ -1,0 +1,26 @@
+{
+    "smartschoolApp": {
+        "enseignantCours" : {
+            "home": {
+                "title": "Affectation les enseignants au cours",
+                "createLabel": "Créer une affectation enseignant cours",
+                "createOrEditLabel": "Créer ou éditer une affectation enseignant Cours",
+                "search": "Chercher Enseignant Cours"
+            },
+            "created": "Un nouveau  Cours à un enseignant a été créé avec l'identifiant {{ param }}",
+            "updated": "L'affectation enseignant au cours avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "L'affectation enseignant au cours avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer  l'affectation ensiegnant au  Cours {{ id }} ?"
+            },
+            "detail": {
+                "title": "Affecter un enseignant à un cours"
+            },
+            "cours": "Cours",
+            "enseignant": "Enseignant",
+            "classe": "Classe",
+            "anneeScolaire": "Année Scolaire"
+        }
+    }
+}
+

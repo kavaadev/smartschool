@@ -1,0 +1,37 @@
+{
+    "smartschoolApp": {
+        "eleve" : {
+            "home": {
+                "title": "Eleves",
+                "createLabel": "Create a new Eleve",
+                "createOrEditLabel": "Create or edit a Eleve",
+                "search": "Search for Eleve"
+            },
+            "created": "A new Eleve is created with identifier {{ param }}",
+            "updated": "A Eleve is updated with identifier {{ param }}",
+            "deleted": "A Eleve is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Eleve {{ id }}?"
+            },
+            "detail": {
+                "title": "Eleve"
+            },
+            "nom": "Nom",
+            "prenom": "Prenom",
+            "telParent": "TelParent",
+            "adresse": "Adresse",
+            "photo": "Photo",
+            "mail": "Mail",
+            "dateNaissance": "DateNaissance",
+            "datePremiereInscription": "DatePremiereInscription",
+            "dateSortie": "DateSortie",
+            "sexe": "Sexe",
+            "commentaire": "Commentaire",
+            "etablissementOrigine": "EtablissementOrigine",
+            "numeroAutorisation": "NumeroAutorisation",
+            "inscription": "Inscription",
+            "pays": "Pays",
+            "profession": "Profession"
+        }
+    }
+}

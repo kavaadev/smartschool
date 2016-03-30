@@ -1,0 +1,513 @@
+<ul class='custom-menu'>
+    <li data-action="first">First thing</li>
+    <li data-action="second">Second thing</li>
+    <li data-action="third">Third thing</li>
+</ul>
+
+<div>
+    <div class="container-fluid" style="background-color: rgba(0, 150, 136, 0.09);">
+    <div class="row" style="margin-right: 0px;margin-left: 0px;">
+        <div class="col-xs-4 no-padding-left">
+            <h2 style="margin-top:15px">{{classe.intitule}}</h2>
+            <h4>{{classe.nombreMax}} élèves maximum</h4>
+            <uib-progressbar ng-if="anneeScolaireCourante" style="height: 20px;" min="0" max="classe.nombreMax" value="(inscriptions | filter:{situation:true}).length" class="progress-striped active" type="success">
+                <span>{{(inscriptions | filter:{situation:true}).length}}</span>
+            </uib-progressbar>
+        </div>
+        <div class="col-xs-8 no-padding-right">
+            <div class="input-group pull-right">
+            <div class="form-group" style="margin-top:15px">
+                <label>Année scolaire</label>
+                <h4 align="center">{{anneeScolaireCourante.intitule}}</h4>
+            </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="bs-component">
+        <ul class="nav nav-tabs" style="margin-bottom: 15px;">
+            <li class="active"><a href="/classe/1#emploidutemps" data-toggle="tab" id="emploi" aria-expanded="true">Emploi du temps<div class="ripple-container"></div></a></li>
+            <li class=""><a href="/classe/1#listeleves" data-toggle="tab" aria-expanded="false">Liste des élèves<div class="ripple-container"></div></a></li>
+            <li class=""><a href="/classe/1#listenseignants" data-toggle="tab" aria-expanded="false" id="enseignant">Liste des enseignants<div class="ripple-container"></div></a></li>
+            <li class=""><a href="/classe/1#notes" data-toggle="tab" aria-expanded="false" id="notesCours">Notes<div class="ripple-container"></div></a></li>
+        </ul>
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade active in" id="emploidutemps">
+                <h3>Emploi du temps
+                    <button type="submit" class="btn btn-primary" id="save-events" ng-click="saveEvents()" ng-show="emploiAjout">
+                        </span>&nbsp;<span>Enregister</span>
+                    </button>
+                    <button type="submit" class="btn btn-info" id="save-events" ng-click="annulerEvents()" ng-show="emploiAjout">
+                        </span>&nbsp;<span>Annuler</span>
+                    </button>
+                    <button type="submit" class="btn btn-primary" id="save-events"  ng-hide="emploiAjout" ng-click="modifierEmploi()">
+                        </span>&nbsp;<span>Modifier</span>
+                    </button>
+                </h3>
+                <div class="row">
+                    <div ng-class="sizeEmploi">
+                        <div id='calendar'></div>
+                    </div>
+                    <div class="col-sm-4 text-right" ng-show="emploiAjout" id="droppable">
+                        <form name="addEvent" role="form" novalidate ng-submit="setEvent()" show-validation>
+                            <div class="form-group">
+                                <select class="form-control" id="field_cours" name="cours" ng-model="coursEvent" ng-options="c as c.cours.intitule for c in cours track by c.id" required>
+                                    <option value="" disabled selected hidden>Choisir un cours ...</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="text"class="form-control" ng-model="event.start" name="heureDebut" id="heureDebut" placeholder="DEBUT" ng-pattern="/^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" ng-model="event.end" name="heureDebut" id="heureDebut" placeholder="FIN" ng-pattern="/^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/" required>
+                            </div>
+                            <div class="form-group">
+                                <select ng-model="event.dow" class="form-control" required>
+                                    <option value="" disabled selected hidden>Choisir un jour ...</option>
+                                    <option value="1">Lundi</option>
+                                    <option value="2">Mardi</option>
+                                    <option value="3">Mercredi</option>
+                                    <option value="4">Jeudi</option>
+                                    <option value="5">Vendredi</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary" id="save-new-enseignantCours" ng-disabled="addEvent.$invalid">
+                                <span class="glyphicon glyphicon-plus"></span>&nbsp;<span>Ajouter</span>
+                            </button>
+                        </form>
+                        <div class="well well-sm" id="calendarTrash">
+                            <legend style="text-align: center;">
+                                Supprimer la séance
+                            </legend>
+                            <legend style="text-align: center;">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </legend>
+                            <div class="note" style="text-align: center;">
+                                <strong>Note:</strong> Glisser déplacer pour supprimer.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="tab-pane fade" id="listeleves">
+                <div class="row">
+                    <div class="col-sm-6 text-left">
+                        <h3 style="margin-top: 0px;">Liste des élèves
+                            <button class="btn btn-primary" ui-sref="classe.basculer({idecole:classe.ecole.id,idclasse:classe.id,idanneescolaire:anneeScolaireCourante.id})"  ng-show="inscriptions.length" id="basculer">Basculer</button>
+                            <button class="btn btn-info" ng-click="exportData()" ng-show="inscriptions.length">EXCEL</button>
+                        </h3>
+                    </div>
+                    <div class="col-sm-6 text-right">
+                        <button class="btn btn-info" ng-click="rechercheActivate()" tooltip="Chercher">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div ng-class="listsize">
+                        <div class="table-responsive">
+                            <table  class="jh-table table table-striped table-hover">
+                                <thead>
+                                <tr>
+
+                                    <th>N°</th>
+                                    <th>Nom</th>
+                                    <th>Prénom</th>
+                                    <th>Date de naissance</th>
+                                    <th>Nationalité</th>
+                                    <th>Date d'entrée</th>
+                                    <th>Sexe</th>
+                                    <th>Lieu de naissance</th>
+                                    <th>Redoublant</th>
+
+                                </tr>
+                                <tr ng-if="rechercheOption" >
+                                    
+                                    <th><input type="text" class="form-control"  ng-model="$parent.inscriptionR.eleve.identifiantEleve"></th>
+                                    <th><input type="text" class="form-control"  ng-model="$parent.inscriptionR.eleve.nom"></th>
+                                    <th><input type="text" class="form-control"  ng-model="$parent.inscriptionR.eleve.prenom"></th>
+                                    <th><input type="text" class="form-control"  ng-model="$parent.inscriptionR.eleve.dateNaissance"></th>
+                                    <th><input type="text" class="form-control"  ng-model="$parent.inscriptionR.eleve.pays.intitule"></th>
+                                    <th><input type="text" class="form-control"  ng-model="$parent.inscriptionR.eleve.datePremiereInscription"></th>
+                                    <th><input type="text" class="form-control"  ng-model="$parent.inscriptionR.eleve.sexe"></th>
+                                    <th><input type="text" class="form-control"  ng-model="$parent.inscriptionR.eleve.lieu_naissance"></th>
+                                </tr>
+                                </thead>
+                                <tbody id="foo">
+
+                                <tr ng-repeat="inscription in inscriptions | filter:{situation:true} |  orderBy:'eleve.nom' | filter:inscriptionR ">
+
+                                    <td ng-click="changedetail(inscription.id,inscription.eleve.id)">{{inscription.eleve.identifiantEleve}}</td>
+                                    <td ng-click="changedetail(inscription.id,inscription.eleve.id)">{{inscription.eleve.nom}}</td>
+                                    <td ng-click="changedetail(inscription.id,inscription.eleve.id)">{{inscription.eleve.prenom}}</td>
+                                    <td ng-click="changedetail(inscription.id,inscription.eleve.id)">{{inscription.eleve.dateNaissance | date:"dd/MM/yyyy"}}</td>
+                                    <td ng-click="changedetail(inscription.id,inscription.eleve.id)">{{inscription.eleve.pays.intitule}}</td>
+                                    <td ng-click="changedetail(inscription.id,inscription.eleve.id)">{{inscription.eleve.datePremiereInscription | date:"dd/MM/yyyy"}}</td>
+                                    <td ng-click="changedetail(inscription.id,inscription.eleve.id)">{{inscription.eleve.sexe}}</td>
+                                    <td ng-click="changedetail(inscription.id,inscription.eleve.id)">{{inscription.eleve.lieu_naissance}}</td>
+                                    <td style="margin: 0px;padding: 0px;"><div class="checkbox" style="margin-bottom: 2px;margin-top: 2px;">
+                                                <label>
+                                                    <input type="checkbox" ng-model="inscription.redoublant" id="redoublant" ng-true-value="true" ng-false-value="false" ng-change="redouble(inscription)">
+                                                </label>
+                                            </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <hr>
+                            <h3>Nombre d'élèves : {{(inscriptions | filter:{situation:true} |  orderBy:'eleve.nom' | filter:inscriptionR).length}}</h3>
+                        </div>
+
+                        <!-- FILE EXPORT -->
+
+
+                        <div id="exportable" style="display:none">
+                            <table style="font-size:20px;">
+                                <thead>
+                                <tr>
+                                    <th align="left">{{classe.ecole.intitule}}</th>
+                                </tr>
+                                <tr>
+                                    <th align="left">Classe : {{classe.intitule}}</th>
+                                </tr>
+                                <tr>
+                                    <th align="left">Année scolaire : {{anneeScolaireCourante.intitule}}</th>
+                                </tr>
+                                <tr></tr>
+                                </thead>
+                            </table>
+                            <table width="100%" border="1" style="font-size:20px;">
+                                <thead>
+                                <tr>
+                                    <th>N°</th>
+                                    <th>Nom</th>
+                                    <th>Prénom</th>
+                                    <th>Date de naissance</th>
+                                    <th>Nationalité</th>
+                                    <th>Date d'entrée</th>
+                                    <th>Lieu de naissance</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="inscription in inscriptions | filter:{situation:true} |  orderBy:'eleve.nom' | filter:inscriptionR " ng-click="changedetail(inscription.id,inscription.eleve.id)" >
+                                    <td align="left">{{inscription.eleve.identifiantEleve}}</td>
+                                    <td align="left">{{inscription.eleve.nom}}</td>
+                                    <td align="left">{{inscription.eleve.prenom}}</td>
+                                    <td align="center">{{inscription.eleve.dateNaissance | date:"dd/MM/yyyy"}}</td>
+                                    <td align="left">{{inscription.eleve.pays.intitule}}</td>
+                                    <td align="center">{{inscription.eleve.datePremiereInscription | date:"dd/MM/yyyy"}}</td>
+                                    <td align="center">{{inscription.eleve.lieu_naissance}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <h3>Nombre d'élèves : {{(inscriptions | filter:{situation:true} |  orderBy:'eleve.nom' | filter:inscriptionR).length}}</h3>
+                        </div>
+
+                        <!-- FILE EXPORT FIN -->
+
+
+                    </div>
+                    <div class="col-md-4 bs-component"  ng-show="detailValue">
+                        <ul class="nav nav-tabs">
+                            <button type="button" class="close" aria-hidden="true" style="padding: 8px;" ng-click="hideDetail()">×</button>
+                            <li class="active"><a href="/classe/1#detaileleve" data-toggle="tab" aria-expanded="true">Détails<div class="ripple-container"></div></a></li>
+                            <li class=""><a href="/classe/1#detaileleve2" data-toggle="tab" aria-expanded="false">Cursus<div class="ripple-container"></div></a></li>
+                        </ul>
+                        <div id="myTabContent2" class="tab-content">
+                            <div class="row tab-pane fade active in" style="margin-right: 0px;margin-left: 0px;background-color: #E8F6F4;" id="detaileleve" >
+                                <div class="col-md-12" style="margin-top:12px;">
+                                    <div class="row-picture" style="text-align: center;">
+                                        <img ng-src="data:image/png;base64,{{inscriptiondetail.eleve.photo}}" alt="Photo" style="line-height: 143px;text-align: center;width: 150px;height: 175px;"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-12" style="margin-top:15px;">
+                                    <div class="table-responsive">
+                                        <table  class="jh-table table table-striped table-hover">
+                                            <tbody id="foo">
+                                            <tr>
+                                                <td>Nom</td>
+                                                <td>{{inscriptiondetail.eleve.nom}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Prénom</td>
+                                                <td>{{inscriptiondetail.eleve.prenom}}</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row tab-pane fade" style="margin-right: 0px;margin-left: 0px;background-color: #E8F6F4;" id="detaileleve2" >
+                                <div class="col-md-12" style="margin-top:15px;">
+                                    <div class="table-responsive">
+                                        <table  class="jh-table table table-striped table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                    {{inscriptiondetail.eleve.nom}} {{inscriptiondetail.eleve.prenom}}
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>Etablissement d'origine</td>
+                                                <td>{{inscriptiondetail.eleve.etablissementOrigine}}</td>
+                                            </tr>
+                                            <tr ng-repeat="curs in cursus | orderBy:'anneeScolaire.intitule' | filter:{situation:true}">
+                                                <td>{{curs.classe.intitule}}</td>
+                                                <td>{{curs.anneeScolaire.intitule}}</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="listenseignants">
+                <h3>Liste des enseignants</h3>
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div class="table-responsive">
+                            <table  class="jh-table table table-striped table-hover">
+                                <thead>
+                                <tr>
+                                    <th>Enseignant</th>
+                                    <th>Cours</th>
+                                </tr>
+                                </thead>
+                                <tbody id="foo">
+                                <tr ng-repeat="c in cours" ng-click="">
+                                    <td>{{c.enseignant.nom}} {{c.enseignant.prenom}}</td>
+                                    <td>{{c.cours.intitule}}</td>
+                                    <td class="text-right">
+                                        <div class="btn-group flex-btn-group-container">
+                                            <button type="submit"
+                                                    ng-click="toggleModal(c.id)"
+                                                    class="btn btn-danger btn-sm" id="enseignantCours-delete">
+                                                <span class="glyphicon glyphicon-remove-circle"></span>
+
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <form name="addEnseignantCours" role="form" novalidate ng-submit="save()" show-validation>
+                            <div class="form-group">
+                                <label class="control-label" for="field_enseignant"  >Enseignant</label>
+                                <select class="form-control" id="field_enseignant" name="enseignant" ng-model="enseignantCours.enseignant" ng-options="enseignant as enseignant.nom+' '+enseignant.prenom  for enseignant in enseignants track by enseignant.id"  required/>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="field_cours" >Cours</label>
+                                <select class="form-control" id="field_cours" name="cours" ng-model="enseignantCours.cours" ng-options="c as c.intitule for c in mescours track by c.id"  required/>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary" id="save-new-enseignantCours">
+                                    <span class="glyphicon glyphicon-plus"></span>&nbsp;<span> Ajouter</span>
+                                </button>
+                            </div>
+                        </form>
+                        <modal title="Login form" visible="showModal">
+                        <form name="deleteForm" ng-submit="confirmDelete(deleteid)" >
+                            <div class="modal-body">
+                                <jh-alert-error></jh-alert-error>
+                                <p>Etes-vous certain de vouloir supprimer cet association ?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                                    <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                                </button>
+                                <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger" id="delete">
+                                    <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
+                                </button>
+                            </div>
+                        </form>
+                        </modal>
+                    </div>
+                </div>
+           </div>
+            <div class="tab-pane fade" id="notes">
+
+                <div class="row" style="margin-right: 0px;margin-left: 0px;">
+                    <div class="col-xs-4 no-padding-left">
+                        <h3 style="margin-top: 0px;">Notes
+                            <button type="submit" ng-show="updateNotes"
+                                    ng-click="enregisterNotes()"
+                                    class="btn btn-primary" id="saveNote">
+                                Enregister
+                            </button>
+                            <button type="submit" ng-hide="updateNotes"
+                                    ng-click="update()"
+                                    class="btn btn-primary" id="updateNote">
+                                Modifier
+                            </button>
+                            <button class="btn btn-info" ng-click="notesExport()" ng-show="inscriptions.length">EXCEL</button>
+                        </h3>
+                    </div>
+                    <div class="col-xs-8 no-padding-right">
+                        <div class="input-group pull-right">
+                            <div class="form-group">
+                                <select class="form-control" ng-model="periode" name="periodes" ng-change="changePeriode()" style="padding: 7px;"  id="periode">
+                                    <option value="1"> Trimestre 1 </option>
+                                    <option value="2"> Trimestre 2 </option>
+                                    <option value="3"> Trimestre 3 </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="checkbox" style="padding-left: 10px;">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="selectAll" ng-model="selection" ng-click="selectAll()"/> Sélectionner tout
+                    </label>
+                </div>
+                <div class="checkbox" style="padding: 10px;background-color:#EEF7F6">
+                    <label class="checkbox-inline" ng-repeat="cours in coursAffectations">
+                        <input type="checkbox" ng-model-options="{ getterSetter: true }" ng-click="selectionLisnner()" ng-model="cours.show" id="checkCours"/> {{cours.intitule}}
+                    </label>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover table-condensed editable-table">
+                        <thead>
+                        <tr style="background-color: #EAE8E8;">
+                            <th>Elève</th>
+                            <th ng-repeat="cours in coursAffectations" ng-if="cours.show" style="text-align: center;background-color: #EAE8E8;" class="animate-if">{{cours.intitule}}</th>
+                            <th ng-hide="updateNotes" style="text-align: center;background-color: #EAE8E8;">Moyenne</th>
+                            <th ng-hide="updateNotes" style="text-align: center;background-color: #EAE8E8;"></span></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr style="background-color: #F7F7F7;" ng-repeat="inscription in inscriptions | filter:{situation:true} |  orderBy:'eleve.nom' | filter:inscriptionR " ng-click="">
+                            <td>{{inscription.eleve.nom}} {{inscription.eleve.prenom}}</td>
+
+
+                            <td ng-repeat="cours in coursAffectations" ng-if="cours.show" class="animate-if" style="width: 100px;" >
+                                <input min="0" ng-show="updateNotes" max="20"  ng-init="initNotes(inscription,cours,periode,($parent.$parent.$index*coursAffectations.length)+$index)" type="number" name="note" id="noteCours_note" style="width: 100px;text-align: center;"
+                                       ng-model="notes[($parent.$parent.$index*coursAffectations.length)+$index].note"/>
+                                <p style="margin: 0px 0px 0px 0px;" align="center" ng-hide="updateNotes">{{notes[($parent.$parent.$index*coursAffectations.length)+$index].note}}</p>
+                                <input style="display:none"  ng-model="notes[($parent.$parent.$index*coursAffectations.length)+$index].inscription"/>
+                                <input style="display:none"  ng-model="notes[($parent.$parent.$index*coursAffectations.length)+$index].cours"/>
+                            </td>
+                            <td ng-hide="updateNotes" class="animate-if" style="width: 100px;text-align: center;background-color: #EAE8E8;"><button style="display:none;"class="btn btn-info" ng-init="bulletinCalcul(inscription.id,$index)">
+                            </button>{{moyenneBulletin[$index] | number:2}}</td>
+                            <td  ng-hide="updateNotes" class="animate-if" style="width: 50px;text-align: center;background-color: #EAE8E8;" >
+                                <boutton  ui-sref="classe.bulletin({idclasse:classe.id,idinscription:inscription.id,periode:periode,idanneescolaire:anneeScolaireCourante.id})" id="bulletinExport">
+                                    <span class="glyphicon glyphicon-list-alt">
+                                </boutton></td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #EAE8E8;">Moyenne classe</th>
+                            <th style="width: 100px;text-align: center;background-color: #EAE8E8;" ng-repeat="cours in coursAffectations" ng-if="cours.show" class="animate-if">{{moyenneCalcul(cours) | number:2}}</th>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <!-- FILE EXPORT FIN -->
+
+                <div class="table-responsive" id="notesExcel" style="display:none;">
+                    Relevé de note<br>
+                    {{classe.intitule}}<br>
+                    {{anneeScolaireCourante.intitule}}<br>
+                    Trimestre : {{periode}}<br><br>
+
+                    <table class="table table-bordered table-hover table-condensed editable-table" border="1" >
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th ng-repeat="cours in coursAffectations" ng-if="cours.show" style="text-align: center;">{{cours.intitule}}</th>
+                            <th ng-hide="updateNotes" style="text-align: center;background-color: #EAE8E8;">Moyenne</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="inscription in inscriptions | filter:{situation:true} |  orderBy:'eleve.nom' | filter:inscriptionR " ng-click="">
+                            <td style="text-align: left;">{{inscription.eleve.nom}} {{inscription.eleve.prenom}}</td>
+
+
+                            <td ng-repeat="cours in coursAffectations" ng-if="cours.show" class="animate-if" style="width: 100px;" >
+                                <p style="margin: 0px 0px 0px 0px;" align="center" ng-hide="updateNotes">{{notes[($parent.$parent.$index*coursAffectations.length)+$index].note}}</p>
+                            </td>
+                            <td ng-hide="updateNotes" class="animate-if" style="width: 100px;text-align: center;background-color: #EAE8E8;"><button style="display:none;"class="btn btn-info" ng-init="bulletinCalcul(inscription.id,$index)">
+                            </button>{{moyenneBulletin[$index] | number:2}}</td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #EAE8E8;">Moyenne de la classe</th>
+                            <th style="width: 100px;text-align: center;background-color: #EAE8E8;" ng-repeat="cours in coursAffectations" ng-if="cours.show" class="animate-if">{{moyenneCalcul(cours) | number:2}}</th>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- FILE EXPORT FIN -->
+        </div>
+    </div>
+    <button type="submit"
+            ui-sref="ecole.classes({idecole:classe.ecole.id})"
+            class="btn btn-info" id="back">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+
+
+</div>
+
+<script !src="">
+    // JAVASCRIPT (jQuery)
+changeDivContent = function(inscription){
+    console.log(inscription.id);
+};
+
+// Trigger action when the contexmenu is about to be shown
+$("#foo").bind("contextmenu", function (event) {
+
+    // Avoid the real one
+    event.preventDefault();
+    var id  = $(this).attr('id');
+    // Show contextmenu
+    $(".custom-menu").finish().toggle(100).
+
+    // In the right position (the mouse)
+    css({
+        top: event.pageY + "px",
+        left: event.pageX + "px"
+    });
+});
+
+
+// If the document is clicked somewhere
+$(document).bind("mousedown", function (e) {
+
+    // If the clicked element is not the menu
+    if (!$(e.target).parents(".custom-menu").length > 0) {
+
+        // Hide it
+        $(".custom-menu").hide(100);
+    }
+});
+
+
+// If the menu element is clicked
+$(".custom-menu li").click(function(){
+
+    // This is the triggered action name
+    switch($(this).attr("data-action")) {
+
+        // A case for each action. Your actions here
+        case "first": alert("first"); break;
+        case "second": alert("second"); break;
+        case "third": alert("third"); break;
+    }
+
+    // Hide it AFTER the action was triggered
+    $(".custom-menu").hide(100);
+  });
+</script>

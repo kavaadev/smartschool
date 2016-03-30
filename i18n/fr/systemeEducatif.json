@@ -1,0 +1,26 @@
+{
+    "smartschoolApp": {
+        "systemeEducatif" : {
+            "home": {
+                "title": "Système Educatif",
+                "createLabel": "Créer un nouveau Système Educatif",
+                "createOrEditLabel": "Créer ou éditer un Système Educatif",
+                "search": "Recherche un Système Educatif"
+            },
+            "created": "Un nouveau Système Educatif a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Système Educatif avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Système Educatif avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Système Educatif {{ id }} ?"
+            },
+            "detail": {
+                "title": "Système éducatif"
+            },
+            "intitule": "Intitulé",
+            "abreviation": "Abréviation",
+            "description": "Description",
+            "classeType": "Classe Type"
+        }
+    }
+}
+

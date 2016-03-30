@@ -1,0 +1,24 @@
+{
+    "smartschoolApp": {
+        "serie" : {
+            "home": {
+                "title": "Séries",
+                "createLabel": "Créer une nouvelle Série",
+                "createOrEditLabel": "Créer ou éditer une Série",
+                "search": "Chercher une série"
+            },
+            "created": "Une nouvelle Série a été créé avec l'identifiant {{ param }}",
+            "updated": "La Série avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "La Série avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer la Série {{ id }} ?"
+            },
+            "detail": {
+                "title": "Série"
+            },
+            "intitule": "Intitulé",
+            "classeType": "Classe Type"
+        }
+    }
+}
+

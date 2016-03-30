@@ -1,0 +1,25 @@
+{
+    "smartschoolApp": {
+        "ville" : {
+            "home": {
+                "title": "Villes",
+                "createLabel": "Créer une nouvelle Ville",
+                "createOrEditLabel": "Créer ou éditer une Ville",
+                "search": "Chercher une  Ville"
+            },
+            "created": "Une nouvelle Ville a été créé avec l'identifiant {{ param }}",
+            "updated": "La Ville avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "La Ville avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer la Ville {{ id }} ?"
+            },
+            "detail": {
+                "title": "Ville"
+            },
+            "intitule": "Intitulé",
+            "region": "Règion",
+            "ecole": "Ecole"
+        }
+    }
+}
+

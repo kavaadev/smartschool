@@ -1,0 +1,161 @@
+
+<div>
+    <div has-authority="ROLE_DIRECTEUR" ui-sref-active="active" >
+        <ul class="shortcuts" style="text-align: center;">
+            <li class="events">
+                <a style="background-color:#C3C3C3;" href="#/" id="back" class="btn-5">
+                    <span class="shortcuts-icon"><span class="glyphicon glyphicon-arrow-left" style="font-size: 50px;"></span></span>
+                    <span class="shortcuts-label"><span translate="entity.action.back">Back</span></span>
+                </a>
+            </li>
+            <li class="events">
+                <a style="background-color:#F44336;" href="" ui-sref="ecole.classes({idecole:ecole.id})" id="classe" class="btn-5">
+                    <span class="shortcuts-icon"><span class="glyphicon glyphicon-th-large" style="font-size: 50px;"></span></span>
+                    <span class="shortcuts-label">Classes</span>
+                </a>
+            </li>
+            <li class="events">
+                <a style="background-color:#3F51B5;" href="" ui-sref="ecole.inscriptions({idecole:ecole.id})" id="inscription" class="btn-5">
+                    <span class="shortcuts-icon"><span class="glyphicon glyphicon-folder-open" style="font-size: 50px;"></span></span>
+                    <span class="shortcuts-label">Inscriptions</span>
+                </a>
+            </li>
+            <li class="events">
+                <a  style="background-color:#83B944;" href="" ui-sref="ecole.eleves({idecole:ecole.id})" id="eleve" class="btn-5">
+                    <span class="shortcuts-icon"><span class="glyphicon glyphicon-education" style="font-size: 50px;"></span></span>
+                    <span class="shortcuts-label">Elèves</span>
+                </a>
+            </li>
+            <li class="events">
+                <a style="background-color:#FFC107;" href="" ui-sref="ecole.enseignants({idecole:ecole.id})" id="enseignant" class="btn-5">
+                    <span class="shortcuts-icon"><span class="glyphicon glyphicon-briefcase" style="font-size: 50px;"></span></span>
+                    <span class="shortcuts-label">Enseignants</span>
+                </a>
+            </li>
+            <li class="events">
+                <a  style="background-color:#E91E63;" href="" ui-sref="ecole.cours({idecole:ecole.id})" id="cours" class="btn-5">
+                    <span class="shortcuts-icon"><span class="glyphicon glyphicon-blackboard" style="font-size: 50px;"></span></span>
+                    <span class="shortcuts-label">Cours</span>
+                </a>
+            </li>
+            <li class="events">
+                <a style="background-color:#880E4F;"  href="" ui-sref="ecole.editAnneeScolaire" id="Configuration" class="btn-5">
+                    <span class="shortcuts-icon"><span class="glyphicon glyphicon-cog" style="font-size: 50px;"></span></span>
+                    <span class="shortcuts-label">Configuration</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    </div>
+<div has-authority="ROLE_ADMIN" ui-sref-active="active" >
+    <h2>{{ecole.intitule}}</h2>
+    <div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th translate="entity.detail.field">Field</th>
+            <th translate="entity.detail.value">Value</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <span translate="smartschoolApp.ecole.intitule">Intitule</span>
+            </td>
+            <td>
+                <span class="form-control-static">{{ecole.intitule}}</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span translate="smartschoolApp.ecole.adresse">Adresse</span>
+            </td>
+            <td>
+                <span class="form-control-static">{{ecole.adresse}}</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span translate="smartschoolApp.ecole.siteWeb">SiteWeb</span>
+            </td>
+            <td>
+                <span class="form-control-static">{{ecole.siteWeb}}</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span translate="smartschoolApp.ecole.categorie">Categorie</span>
+            </td>
+            <td>
+                <span class="form-control-static" translate="{{'smartschoolApp.Categorie.' + ecole.categorie}}">{{ecole.categorie}}</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span translate="smartschoolApp.ecole.gpsLatitude">GpsLatitude</span>
+            </td>
+            <td>
+                <span class="form-control-static">{{ecole.gpsLatitude}}</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span translate="smartschoolApp.ecole.gpsLongitude">GpsLongitude</span>
+            </td>
+            <td>
+                <span class="form-control-static">{{ecole.gpsLongitude}}</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span translate="smartschoolApp.ecole.user">user</span>
+            </td>
+            <td>
+                {{ecole.user.firstName}} {{ecole.user.lastName}}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span translate="smartschoolApp.ecole.pays">pays</span>
+            </td>
+            <td>
+                {{ecole.pays.intitule}}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span translate="smartschoolApp.ecole.region">region</span>
+            </td>
+            <td>
+                {{ecole.region.intitule}}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span translate="smartschoolApp.ecole.ville">ville</span>
+            </td>
+            <td>
+                {{ecole.ville.intitule}}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span translate="smartschoolApp.ecole.classeType">classeType</span>
+            </td>
+            <td>
+                    <span ng-repeat="classeType in ecole.classeTypes">
+                        <a class="form-control-static" ui-sref="classeType.detail({id: {{classeType.id}}})">{{classeType.intitule}}</a>{{$last ? '' : ', '}}
+                    </span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+
+    <button type="submit"
+        onclick="window.history.back()"
+        class="btn btn-info" id="back">
+    <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>
+</div>
