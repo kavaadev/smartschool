@@ -13,9 +13,10 @@ angular.module('smartschoolApp')
        $scope.isAuthenticated = function(){
                    return true;
        };
-       
-       $scope.account = { username : "directeur",
+
+       $scope.account = { login : "directeur",
                           password : "directeur"
+                          username : "directeur"
        };
 
     });
