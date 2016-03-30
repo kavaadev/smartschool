@@ -11,7 +11,7 @@
                 <div class="alert alert-success" ng-switch-when="true" translate="main.logged.message" translate-values="{username: '{{account.login}}'}">
                     You are logged in as user "{{account.login}}".
                 </div>
-                <div has-authority="ROLE_DIRECTEUR" ng-switch-when="true">
+                <div ng-switch-when="true">
                     <table class="jh-table table table-striped">
                         <thead>
                         <tr jh-sort="predicate" ascending="reverse">
