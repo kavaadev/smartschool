@@ -43,9 +43,6 @@ angular.module('smartschoolApp')
                                     $translatePartialLoader.addPart('global');
                                     return $translate.refresh();
                                 }],
-                                entity: ['$stateParams', 'Ecole', function($stateParams, Ecole) {
-                                                        return Ecole.get({id : $stateParams.idecole});
-                                }]
                             }
                         })
             .state('classe.detail', {
@@ -66,9 +63,6 @@ angular.module('smartschoolApp')
                         $translatePartialLoader.addPart('classe');
                         return $translate.refresh();
                     }],
-                    entity: ['$stateParams', 'Classe', function($stateParams, Classe) {
-                        return Classe.get({id : $stateParams.id});
-                    }]
                 }
             })
             .state('classe.bulletin', {
