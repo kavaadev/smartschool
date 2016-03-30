@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('smartschoolApp')
-    .controller('MainController', function ($scope,$state,$location, Principal) {
+    .controller('MainController', function ($scope,$state,$location) {
 
 
 
