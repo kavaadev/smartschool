@@ -29,7 +29,7 @@ angular.module('smartschoolApp')
                 parent: 'entity',
                 url: '/ecole/{id}',
                 data: {
-                    authorities: ['ROLE_ADMIN','ROLE_DIRECTEUR'],
+                    authorities: [],
                     pageTitle: 'smartschoolApp.ecole.detail.title'
                 },
                 views: {
@@ -44,9 +44,6 @@ angular.module('smartschoolApp')
                         $translatePartialLoader.addPart('categorie');
                         return $translate.refresh();
                     }],
-                    entity: ['$stateParams', 'Ecole', function($stateParams, Ecole) {
-                        return Ecole.get({id : $stateParams.id});
-                    }]
                 }
             })
             .state('ecole.new', {

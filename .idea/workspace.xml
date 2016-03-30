@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="79340f3a-eef8-4ff0-a08e-87902db53dfa" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/app/entities/ecole/ecole-detail.html" afterPath="$PROJECT_DIR$/scripts/app/entities/ecole/ecole-detail.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/app/entities/ecole/ecole-detail.controller.js" afterPath="$PROJECT_DIR$/scripts/app/entities/ecole/ecole-detail.controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/app/entities/ecole/ecole.js" afterPath="$PROJECT_DIR$/scripts/app/entities/ecole/ecole.js" />
     </list>
     <ignored path="smartschool.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,16 +39,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="40" column="46" selection-start-line="40" selection-start-column="46" selection-end-line="40" selection-end-column="73" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="principal.service.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/components/auth/principal.service.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="3" column="56" selection-start-line="3" selection-start-column="49" selection-end-line="3" selection-end-column="56" />
               <folding />
             </state>
           </provider>
@@ -103,11 +94,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ecole-detail.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ecole-detail.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scripts/app/entities/ecole/ecole-detail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7558348">
+            <state vertical-scroll-proportion="-16.192308">
               <caret line="47" column="10" selection-start-line="47" selection-start-column="10" selection-end-line="47" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ecole.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/app/entities/ecole/ecole.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="45" column="23" selection-start-line="45" selection-start-column="23" selection-end-line="45" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ecole-detail.controller.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/scripts/app/entities/ecole/ecole-detail.controller.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.23327616">
+              <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -136,6 +147,8 @@
         <option value="$PROJECT_DIR$/scripts/app/app.js" />
         <option value="$PROJECT_DIR$/scripts/app/main/main.html" />
         <option value="$PROJECT_DIR$/scripts/app/entities/ecole/ecole-detail.html" />
+        <option value="$PROJECT_DIR$/scripts/app/entities/ecole/ecole.js" />
+        <option value="$PROJECT_DIR$/scripts/app/entities/ecole/ecole-detail.controller.js" />
       </list>
     </option>
   </component>
@@ -518,14 +531,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/app/entities/ecole/ecole-detail.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33246073">
-          <caret line="9" column="30" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scripts/components/auth/authority.directive.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33246073">
@@ -608,8 +613,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/app/entities/ecole/ecole-detail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7558348">
+        <state vertical-scroll-proportion="-16.192308">
           <caret line="47" column="10" selection-start-line="47" selection-start-column="10" selection-end-line="47" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/app/entities/ecole/ecole.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="45" column="23" selection-start-line="45" selection-start-column="23" selection-end-line="45" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/app/entities/ecole/ecole-detail.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23327616">
+          <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
           <folding />
         </state>
       </provider>
