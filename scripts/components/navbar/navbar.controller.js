@@ -8,7 +8,9 @@ angular.module('smartschoolApp')
                                 intitule : "Ecole de test"
                             }];
 
-        $scope.isAuthenticated = false;
+        $scope.isAuthenticated = function(){
+            return true;
+        };
         $scope.$state = $state;
         $scope.inProduction = ENV === 'prod';
 
@@ -19,15 +21,6 @@ angular.module('smartschoolApp')
         $scope.account = { username : "directeur",
              password : "directeur"
         };
-
-        $scope.isAuthenticated = false;
-
-
-
-
-
-
-
 
 
     });
