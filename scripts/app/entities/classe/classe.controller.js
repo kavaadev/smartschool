@@ -8,7 +8,7 @@ angular.module('smartschoolApp')
         $scope.reverse = true;
         $scope.page = 1;
         $scope.loadAll = function() {
-        });
+        };
         };
         $scope.loadPage = function(page) {
         };
