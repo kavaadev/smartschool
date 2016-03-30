@@ -10,7 +10,10 @@ angular.module('smartschoolApp')
                intitule : "Ecole de test"
        }];
 
-       $scope.isAuthenticated = false;
+       $scope.isAuthenticated = function(){
+                   return true;
+       };
+       
        $scope.account = { username : "directeur",
                           password : "directeur"
        };
