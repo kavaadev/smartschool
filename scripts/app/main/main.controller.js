@@ -15,7 +15,7 @@ angular.module('smartschoolApp')
        };
 
        $scope.account = { login : "directeur",
-                          password : "directeur"
+                          password : "directeur",
                           username : "directeur"
        };
 
