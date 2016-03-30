@@ -7,7 +7,7 @@ angular.module('smartschoolApp')
                 parent: 'entity',
                 url: '/ecoles',
                 data: {
-                    authorities: ['ROLE_ADMIN'],
+                    authorities: [],
                     pageTitle: 'smartschoolApp.ecole.home.title'
                 },
                 views: {

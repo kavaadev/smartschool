@@ -7,7 +7,7 @@ angular.module('smartschoolApp')
                 parent: 'entity',
                 url: '/classes',
                 data: {
-                    authorities: ['ROLE_DIRECTEUR'],
+                    authorities: [],
                     pageTitle: 'smartschoolApp.classe.home.title'
                 },
                 views: {
@@ -28,7 +28,7 @@ angular.module('smartschoolApp')
                             parent: 'entity',
                             url: '/ecole/{idecole}/classes',
                             data: {
-                                authorities: ['ROLE_DIRECTEUR'],
+                                authorities: [],
                                 pageTitle: 'smartschoolApp.classe.home.title'
                             },
                             views: {
@@ -52,7 +52,7 @@ angular.module('smartschoolApp')
                 parent: 'entity',
                 url: '/classe/{id}',
                 data: {
-                    authorities: ['ROLE_DIRECTEUR'],
+                    authorities: [],
                     pageTitle: 'smartschoolApp.classe.detail.title'
                 },
                 views: {
@@ -75,7 +75,7 @@ angular.module('smartschoolApp')
                             parent: 'classe.detail',
                             url: '/bulletin/{idclasse}/{idinscription}/{periode}/{idanneescolaire}',
                             data: {
-                                authorities: ['ROLE_DIRECTEUR'],
+                                authorities: [],
                                 pageTitle: 'Bulletin'
                             },
                             onEnter: ['$stateParams', '$state', '$uibModal','Ecole', function($stateParams, $state, $uibModal,Ecole) {
@@ -130,7 +130,7 @@ angular.module('smartschoolApp')
                                         parent: 'classe.detail',
                                         url: '/basculer/{idecole}/{idclasse}/{idanneescolaire}',
                                         data: {
-                                            authorities: ['ROLE_DIRECTEUR'],
+                                            authorities: [],
                                             pageTitle: 'Bulletin'
                                         },
                                         onEnter: ['$stateParams', '$state', '$uibModal','Ecole', function($stateParams, $state, $uibModal,Ecole) {
@@ -158,7 +158,7 @@ angular.module('smartschoolApp')
                 parent: 'ecole.classes',
                 url: '/{idecole}/ajoutClasse/',
                 data: {
-                    authorities: ['ROLE_DIRECTEUR'],
+                    authorities: [],
                 },
                 onEnter: ['$stateParams', '$state', '$uibModal','Ecole', function($stateParams, $state, $uibModal,Ecole) {
                     $uibModal.open({
@@ -186,7 +186,7 @@ angular.module('smartschoolApp')
                 parent: 'ecole.classes',
                 url: '/{idecole}/modifierClasse/{id}',
                 data: {
-                    authorities: ['ROLE_DIRECTEUR'],
+                    authorities: [],
                 },
                 onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                     $uibModal.open({
@@ -209,7 +209,7 @@ angular.module('smartschoolApp')
                 parent: 'ecole.classes',
                 url: '/{idecole}/supprimerClasse/{id}',
                 data: {
-                    authorities: ['ROLE_DIRECTEUR'],
+                    authorities: [],
                 },
                 onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                     $uibModal.open({
